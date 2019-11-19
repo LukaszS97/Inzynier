@@ -18,10 +18,11 @@ import { PersonalDataComponent } from './personal-data/personal-data.component';
 import { RaportComponent } from './raport/raport.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { VacationComponent } from './vacation/vacation.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpService } from './http.service';
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
+import { BasicAuthInterceptor } from './basic-auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AuthGuardService } from './auth-guard.service';
   providers: [
     AuthGuardService,
     AuthService,
-    HttpService
+    HttpService,
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

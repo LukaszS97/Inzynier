@@ -24,7 +24,6 @@ export class HttpService {
   }
 
   createEmployee(employee: Employee): Observable<Employee> {
-    const authHeaders = this.authService.getAuthorizationHeaders();
-    return this.http.post<Employee>(`http://localhost:8080/api/employee`, employee, { headers: authHeaders });
+    return this.http.post<Employee>(`http://localhost:8080/api/employee`, employee);
   }
 }

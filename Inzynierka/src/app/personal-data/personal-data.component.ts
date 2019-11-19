@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Employee } from '../models/employee';
+
 @Component({
   selector: 'app-personal-data',
   templateUrl: './personal-data.component.html',
@@ -11,6 +12,7 @@ export class PersonalDataComponent implements OnInit {
   employee: Employee = new Employee();
   visible = false;
   button = 'Pokaż';
+
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
@@ -18,7 +20,6 @@ export class PersonalDataComponent implements OnInit {
 
   createEmployee() {
     this.httpService.createEmployee(this.employee).subscribe(data => {
-
     });
   }
   showHideForm() {
