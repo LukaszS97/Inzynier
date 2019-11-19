@@ -1,0 +1,28 @@
+<div class="bgimg w3-container" id="registration">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Rejestracja nowego pracownika</span></h5>
+    <div [hidden]="submitted" style="width: auto;">
+      <form (ngSubmit)="addUser()">
+        <table style="margin: auto;">
+          <tbody>
+            <tr>
+            <tr>
+              <td>Login</td>
+              <td><input type="email" id="email" [(ngModel)]="user.email" class="w3-input w3-padding-16 w3-border"
+                  name="email"></td>
+            </tr>
+            <tr>
+              <td>Hasło</td>
+              <td><input type="text" id="password" [(ngModel)]="user.password" class="w3-input w3-padding-S16 w3-border"
+                  name="password"></td>
+            </tr>
+            <td align="center" colspan="2"><button type="submit" class="w3-button w3-blue">Dodaj pracownika</button></td>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="komunikat" [hidden]="!submitted">
+  <h4>Pomyślnie zarejestrowano pracownika!</h4>
+</div>

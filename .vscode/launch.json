@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - HrApplication",
+            "request": "launch",
+            "mainClass": "app.HrApplication",
+            "projectName": "hr"
+        }
+    ]
+}

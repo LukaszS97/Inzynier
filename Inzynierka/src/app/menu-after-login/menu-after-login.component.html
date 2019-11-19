@@ -1,0 +1,29 @@
+<div class="w3-col s2">
+  <a href="/registration" class="w3-button w3-block w3-blue">Rejestracja pracownika</a>
+</div>
+<div class="w3-col s2">
+  <a href="/graphic" class="w3-button w3-block w3-blue">Grafik</a>
+</div>
+<div class="w3-col s2">
+  <a href="/excercise" class="w3-button w3-block w3-blue">Zadania</a>
+</div>
+<div class="w3-col s2">
+  <a href="/raport" class="w3-button w3-block w3-blue">Raporty</a>
+</div>
+<div class="w3-col s2">
+  <a href="/vacation" class="w3-button w3-block w3-blue">Wnioski Urlopowe</a>
+</div>
+<div class="w3-col s2">
+  <ul class="my-data">
+    <li>
+      <a  class="w3-button w3-block w3-blue">Moje Dane</a>
+      <ul>
+        <li (click)="authService.signOut()"><a href="/main">Wyloguj</a></li>
+        <li><a href="/password-edit">Zmień hasło</a></li>
+        <li><a href="/personal-data">Dane Osobowe</a></li>
+        <li><a href="/payment-history">Historia Wypłat</a></li>
+        <li><a href="/leave">Zwolnij Się</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
