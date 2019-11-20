@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-job-offers',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobOffersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+  }
+  getJoboffers() {
+    this.httpService.getJoboffers().subscribe(offers => {
+      console.log(offers);
+    });
   }
 }

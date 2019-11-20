@@ -1,0 +1,38 @@
+<div class="bgimg w3-container">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Dodawanie oferty pracy.</span></h5>
+    <div [hidden]="submitted" style="width: auto;">
+    <form (ngSubmit)="addJoboffer()">
+      <table style="margin: auto;">
+        <tr>
+          <td>Warunki</td>
+          <td><input [(ngModel)]="joboffer.conditions" type="text" id="conditions" name="conditions" class="w3-input w3-padding-16 w3-border"></td>
+        </tr>
+        <tr>
+          <td>Opis posady</td>
+          <td><input [(ngModel)]="joboffer.jobDescription" type="text" id="jobDescription" name="jobDescription" class="w3-input w3-padding-S16 w3-border"></td>
+        </tr>
+        <tr>
+          <td>Mile widziane</td>
+          <td><input [(ngModel)]="joboffer.niceToHave" type="text" id="niceToHave" name="niceToHave" class="w3-input w3-padding-S16 w3-border"></td>
+        </tr>
+        <tr>
+          <td>Pozycja</td>
+          <td><input [(ngModel)]="joboffer.position" type="text" id="position" name="position" class="w3-input w3-padding-S16 w3-border"></td>
+        </tr>
+        <tr>
+          <td>Wymagania</td>
+          <td><input [(ngModel)]="joboffer.requirements" type="text" id="requirements" name="requirements" class="w3-input w3-padding-S16 w3-border"></td>
+        </tr>
+        <tr>
+          <td><button type="submit" class="w3-button w3-blue">Zatwierdź</button></td>
+          <td><button type="reset" class="w3-button w3-red">Anuluj</button></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  </div>
+  </div>
+  <div class="komunikat" [hidden]="!submitted">
+    <h4>Pomyślnie dodano ofertę pracy.</h4>
+  </div>
