@@ -37,20 +37,13 @@ public class EmployeeService {
 
 
     public void completeDataAfterFirstLogin(Employee employee) {
-        // Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        // String name = auth.getName(); //get logged in username
-         //User user = userRepository.findById((long) 1).orElseThrow(() ->
-         //new NoSuchElementException("Not found"));
-         System.out.println("300000000000000000000!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-         User user = userRepository.findByEmail("w@w.w");
-         System.out.println("400000000000000000000!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-         user.setUserRole(userRoleRepository.findByRole("ROLE_EMPLOYEE"));
-         System.out.println("500000000000000000000!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-         employee.setUser(user);
-         System.out.println("600000000000000000000!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-         //employee.setUser(userRepository.findByEmail("a@a.a"));
-         employeeRepository.save(employee);
-     }
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        User user = userRepository.findByEmail(name);
+        user.setUserRole(userRoleRepository.findByRole("ROLE_EMPLOYEE"));
+        employee.setUser(user);
+        employeeRepository.save(employee);
+    }
 
 
     public void editEmployeeData(Employee employee, Long id) {
@@ -71,6 +64,8 @@ public class EmployeeService {
 
     public void removeEmployee(Long id) {
         employeeRepository.delete(employeeRepository.findById(id).orElseThrow(() ->
+                new NoSuchElementException("Not found")));
+        userRepository.delete(userRepository.findById(id).orElseThrow(() ->
                 new NoSuchElementException("Not found")));
     }
 

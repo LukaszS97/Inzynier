@@ -1,4 +1,4 @@
-package app.model;
+package app.model.auth;
 
 import java.io.Serializable;
 

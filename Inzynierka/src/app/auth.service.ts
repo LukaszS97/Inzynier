@@ -28,7 +28,7 @@ export class AuthService {
   public getUsername(): string {
     try {
       const decodedToken = jwt_decode(this.getApiToken());
-      return decodedToken.sub;
+      return decodedToken;
     }
     catch (Error) {
       return '';

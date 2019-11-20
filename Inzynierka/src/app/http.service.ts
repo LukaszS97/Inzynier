@@ -24,6 +24,9 @@ export class HttpService {
   }
 
   createEmployee(employee: Employee): Observable<Employee> {
+    console.log(this.authService.getUsername());
     return this.http.post<Employee>(`http://localhost:8080/api/employee`, employee);
   }
+
+
 }

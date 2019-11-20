@@ -8,6 +8,7 @@ import app.repository.UserRepository;
 import app.repository.UserRoleRepository;
 
 import java.util.Date;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -24,13 +25,8 @@ public class UserService {
     private UserRepository userRepository;
     private UserRoleRepository userRoleRepository;
     private PasswordEncoder passwordEncoder;
-   // private EmployeeRepository employeeRepository;
-/*
-    @Autowired
-    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
-*/
+
+
     @Autowired
     public UserService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
@@ -57,5 +53,12 @@ public class UserService {
         userRepository.save(user);
     }
 
-    
+    public void changePassword(String password, Long id){
+        User user = userRepository.findById(id).orElseThrow(() ->
+                new NoSuchElementException("Not found"));
+        user.setPassword(passwordEncoder.encode(password));
+        userRepository.save(user);
+    }
+
+
 }
