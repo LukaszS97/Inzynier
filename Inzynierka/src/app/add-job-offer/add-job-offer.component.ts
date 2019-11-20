@@ -17,7 +17,6 @@ export class AddJobOfferComponent implements OnInit {
   }
   addJoboffer() {
     this.httpService.addJoboffer(this.joboffer).subscribe(offers => {
-
       if (offers === 'created') {
         this.submitted = true;
       }
