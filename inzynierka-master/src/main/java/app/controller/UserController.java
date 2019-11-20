@@ -14,8 +14,22 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-
+@RequestMapping("/api/user")
+@CrossOrigin
 public class UserController {
 
+    private UserService userService;
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    @RequestMapping(path = "/{id}",
+            method = RequestMethod.PUT,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void editPassword(@RequestBody String password, @PathVariable Long id){
+        userService.changePassword(password,id);
+    }
 }
 

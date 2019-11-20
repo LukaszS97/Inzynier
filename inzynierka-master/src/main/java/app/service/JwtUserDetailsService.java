@@ -3,7 +3,7 @@ package app.service;
 import java.util.ArrayList;
 
 import app.model.User;
-import app.model.UserDTO;
+import app.model.auth.UserDTO;
 import app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
