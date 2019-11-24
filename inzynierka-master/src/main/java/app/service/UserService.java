@@ -61,4 +61,9 @@ public class UserService {
     }
 
 
+    public long getId() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName(); //get logged in username
+        return userRepository.findByEmail(email).getId_user();
+    }
 }

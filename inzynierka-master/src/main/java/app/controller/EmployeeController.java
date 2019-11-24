@@ -24,9 +24,7 @@ public class EmployeeController {
     @RequestMapping(method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public void saveEmployeeData(@RequestBody Employee employee){
-        System.out.println("000000000000000000000!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         employeeService.completeDataAfterFirstLogin(employee);
-        System.out.println("000000000123124234000000000000!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     @RequestMapping(path = "/{id}",

@@ -28,8 +28,14 @@ public class UserController {
     @RequestMapping(path = "/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void editPassword(@RequestBody String password, @PathVariable Long id){
-        userService.changePassword(password,id);
+    public void editPassword(@RequestBody String password, @PathVariable Long id) {
+        userService.changePassword(password, id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public long getIdUser() {
+        return userService.getId();
     }
 }
 
