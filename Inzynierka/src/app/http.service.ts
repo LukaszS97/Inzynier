@@ -6,6 +6,7 @@ import { Employee } from './models/employee';
 import { LoginResult } from './models/login-result';
 import { AuthService } from './auth.service';
 import { Joboffer } from './models/joboffer';
+import { CandidateEmployee } from './models/candidate-employee';
 
 
 
@@ -73,6 +74,10 @@ export class HttpService {
 
   async addJoboffer(joboffer: Joboffer): Promise<string> {
     return await this.httpPostRequest('api/joboffer', joboffer);
+  }
+
+  async addCandidate(candidate: CandidateEmployee): Promise<string> {
+    return await this.httpPostRequest('o tu podac ścieżke trzeba', candidate);
   }
 
   async getJoboffers(): Promise<Array<Joboffer>> {

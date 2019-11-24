@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './auth-guard.service';
 import { MenuAfterLoginComponent } from './menu-after-login/menu-after-login.component';
 import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
+import { CandidateComponent } from './candidate/candidate.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'leave', component: LeaveComponent, canActivate: [AuthGuardService]},
   { path: 'log', component: LoginComponent, canActivate: [AuthGuardService]},
   { path: 'menu', component: MenuAfterLoginComponent},
-  { path: 'add-job-offer', component: AddJobOfferComponent, canActivate: [AuthGuardService]}
+  { path: 'add-job-offer', component: AddJobOfferComponent, canActivate: [AuthGuardService]},
+  { path: 'candidate', component: CandidateComponent}
 ];
 
 @NgModule({

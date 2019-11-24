@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Joboffer } from '../models/joboffer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-offers',
@@ -10,7 +11,7 @@ import { Joboffer } from '../models/joboffer';
 export class JobOffersComponent implements OnInit {
   jobsList: Array<Joboffer>;
   submit = true;
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, private router: Router) {
 
   }
 
@@ -25,5 +26,8 @@ export class JobOffersComponent implements OnInit {
   }
   hideDetails() {
     this.submit = true;
+  }
+  aplication() {
+    this.router.navigate(['candidate']);
   }
 }

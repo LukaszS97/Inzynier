@@ -24,6 +24,7 @@ import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 import { BasicAuthInterceptor } from './basic-auth-interceptor.service';
 import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
+import { CandidateComponent } from './candidate/candidate.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
     RaportComponent,
     RegistrationComponent,
     VacationComponent,
-    AddJobOfferComponent
+    AddJobOfferComponent,
+    CandidateComponent
   ],
   imports: [
     BrowserModule,
