@@ -19,10 +19,12 @@ export class PersonalDataComponent implements OnInit {
   }
 
   createEmployee() {
-    this.httpService.createEmployee(this.employee).subscribe(data => {
+    const result = this.httpService.createEmployee(this.employee);
+    if (result) {
       this.button = 'Pokaż';
       this.visible = false;
-    });
+    }
+
   }
   showHideForm() {
     this.visible = !this.visible;

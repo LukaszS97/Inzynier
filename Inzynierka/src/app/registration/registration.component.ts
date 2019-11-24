@@ -16,11 +16,10 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
   }
   addUser() {
-    this.httpService.addUser(this.user).subscribe(data => {
-      if (data === 'Created') {
-        this.submitted = true;
-      }
-    });
+     const result = this.httpService.addUser(this.user);
+     if(result) {
+      this.submitted = true;
+     }
   }
 }
 

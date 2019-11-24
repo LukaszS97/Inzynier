@@ -15,11 +15,10 @@ export class AddJobOfferComponent implements OnInit {
 
   ngOnInit() {
   }
-  addJoboffer() {
-    this.httpService.addJoboffer(this.joboffer).subscribe(offers => {
-      if (offers === 'created') {
-        this.submitted = true;
-      }
-    });
-  }
+  async addJoboffer() {
+    const result = this.httpService.addJoboffer(this.joboffer);
+    if (result) {
+      this.submitted = true;
+    }
+}
 }

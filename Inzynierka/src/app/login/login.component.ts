@@ -13,7 +13,7 @@ import { LoginResult } from '../models/login-result';
 })
 export class LoginComponent implements OnInit {
   user: User = new User();
-
+  id: Promise<any>;
   constructor(private httpService: HttpService, private authSerive: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
     if (result) {
       this.authSerive.setApiToken(result);
       this.router.navigate(['personal-data']);
+      this.id = this.httpService.getId();
+      console.log(this.id);
     }
   }
 }
