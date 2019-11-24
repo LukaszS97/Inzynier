@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './models/User';
 import { Employee } from './models/employee';
@@ -19,9 +19,51 @@ export class HttpService {
   addUser(user: User): Observable<string> {
     return this.http.post<string>('http://localhost:8080/register', user, { responseType: 'text' as 'json' });
   }
+  //tą uzywac jesli mi nic nie zwraca
 
-  login(user: User): Observable<LoginResult> {
-    return this.http.post<LoginResult>('http://localhost:8080/authenticate', user);
+  public httpActionRequest(actionName: string, requestData: any = {}): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.post<any>(`http://localhost:8080/${actionName}`, requestData, { observe: 'response' })
+        .subscribe((response: HttpResponse<any>) => {
+
+          if (response.status >= 200 && response.status < 300) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+//get z lub bez parametru
+  public httpGetRequest(actionName: string, params: string = ''): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.get<any>(`http://localhost:8080/${actionName}/${params}`, { observe: 'response' })
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+// post, który coś zwraca
+  public httpPostRequest(actionName: string, requestData: any = {}): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.post<any>(`http://localhost:8080/${actionName}`, requestData, { observe: 'response' })
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+
+
+  async login(user: User): Promise<LoginResult> {
+    return await this.httpPostRequest('authenticate', user);
   }
 
   createEmployee(employee: Employee): Observable<Employee> {
@@ -32,7 +74,7 @@ export class HttpService {
     return this.http.post<Joboffer>('http://localhost:8080/api/joboffer', joboffer, { responseType: 'text' as 'json' });
   }
 
-  getJoboffers(): Observable<Array<Joboffer>> {
-    return this.http.get<Array<Joboffer>>('http://localhost:8080/api/joboffer');
+  async getJoboffers(): Promise<Array<Joboffer>> {
+    return await this.httpGetRequest('api/joboffer');
   }
 }

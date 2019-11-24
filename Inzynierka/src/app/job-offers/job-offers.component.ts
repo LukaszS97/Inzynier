@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
-import { BehaviorSubject } from 'rxjs';
 import { Joboffer } from '../models/joboffer';
 
 @Component({
@@ -9,15 +8,22 @@ import { Joboffer } from '../models/joboffer';
   styleUrls: ['./job-offers.component.css']
 })
 export class JobOffersComponent implements OnInit {
-  jobsListObs = new BehaviorSubject<Array<Joboffer>>([]);
-
+  jobsList: Array<Joboffer>;
+  submit = true;
   constructor(private httpService: HttpService) {
-    this.httpService.getJoboffers().subscribe(list => {
-    this.jobsListObs.next(list);
-    console.log(this.jobsListObs);
-    });
+
   }
 
   ngOnInit() {
+    this.httpService.getJoboffers().then((list: Array<Joboffer>) => {
+      this.jobsList = list;
+    });
+  }
+
+  showDetails() {
+    this.submit = false;
+  }
+  hideDetails() {
+    this.submit = true;
   }
 }

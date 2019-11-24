@@ -3,6 +3,7 @@ import { HttpService } from '../http.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
+import { LoginResult } from '../models/login-result';
 
 
 @Component({
@@ -18,11 +19,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    this.httpService.login(this.user).subscribe(token => {
-      this.authSerive.setApiToken(token);
+  async login() {
+    const result: LoginResult = await this.httpService.login(this.user);
+    if (result) {
+      this.authSerive.setApiToken(result);
       this.router.navigate(['personal-data']);
-    });
+    }
   }
 }
 
