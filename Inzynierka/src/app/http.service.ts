@@ -77,7 +77,7 @@ export class HttpService {
   }
 
   async addCandidate(candidate: CandidateEmployee): Promise<string> {
-    return await this.httpPostRequest('o tu podac ścieżke trzeba', candidate);
+    return await this.httpPostRequest('api/applicationForm', candidate);
   }
 
   async getJoboffers(): Promise<Array<Joboffer>> {
@@ -86,5 +86,12 @@ export class HttpService {
 
   async getId(): Promise<any> {
     return await this.httpGetRequest('api/user');
+<<<<<<< HEAD
+=======
+  }
+
+  async getEmployee(idUser): Promise<any> {
+    return await this.httpGetRequest('api/employee', idUser);
+>>>>>>> a645240c737169c939b207ce0f0f8ad7da463faa
   }
 }

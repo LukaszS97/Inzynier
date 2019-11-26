@@ -1,3 +1,5 @@
+import { User } from './User';
+
 export class Employee {
   id?;
   address: string;
@@ -5,4 +7,5 @@ export class Employee {
   firstName;
   lastName;
   phoneNumber;
+  user: User;
 }
