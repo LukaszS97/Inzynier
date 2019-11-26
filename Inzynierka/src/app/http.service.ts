@@ -61,9 +61,22 @@ export class HttpService {
     });
   }
 
-  async addUser(user: User, role: UserRole): Promise<any> {
-    console.log(role.userRole);
-    return await this.http.post<any>(`http://localhost:8080/register/${role.userRole}`, user);
+  // post z parametrem , który coś zwraca
+  public httpPostRequestt(actionName: string, params: string = '', requestData: any = {}): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.post<any>(`http://localhost:8080/${actionName}/${params}`, requestData, { observe: 'response' })
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+
+   async addUser(user: User, role: UserRole): Promise<string> {
+    return await this.httpPostRequestt('register', role.userRole,  user);
   }
 
   async login(user: User): Promise<LoginResult> {
@@ -88,12 +101,12 @@ export class HttpService {
 
   async getId(): Promise<any> {
     return await this.httpGetRequest('api/user');
-<<<<<<< HEAD
-=======
+
+
   }
 
   async getEmployee(idUser): Promise<any> {
     return await this.httpGetRequest('api/employee', idUser);
->>>>>>> a645240c737169c939b207ce0f0f8ad7da463faa
+
   }
 }
