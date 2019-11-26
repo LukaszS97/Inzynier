@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
 import { Joboffer } from './models/joboffer';
 import { CandidateEmployee } from './models/candidate-employee';
 import { UserRole } from './models/user-role';
+import { JobName } from './models/job-name';
 
 
 
@@ -62,7 +63,7 @@ export class HttpService {
   }
 
   // post z parametrem , który coś zwraca
-  public httpPostRequestt(actionName: string, params: string = '', requestData: any = {}): Promise<any> {
+  public httpPostRequestParm(actionName: string, params: string = '', requestData: any = {}): Promise<any> {
     return new Promise((resolve) => {
       this.http.post<any>(`http://localhost:8080/${actionName}/${params}`, requestData, { observe: 'response' })
         .subscribe((response: HttpResponse<any>) => {
@@ -76,7 +77,7 @@ export class HttpService {
   }
 
    async addUser(user: User, role: UserRole): Promise<string> {
-    return await this.httpPostRequestt('register', role.userRole,  user);
+    return await this.httpPostRequestParm('register', role.userRole,  user);
   }
 
   async login(user: User): Promise<LoginResult> {
@@ -91,8 +92,8 @@ export class HttpService {
     return await this.httpPostRequest('api/joboffer', joboffer);
   }
 
-  async addCandidate(candidate: CandidateEmployee): Promise<string> {
-    return await this.httpPostRequest('api/applicationForm', candidate);
+  async addCandidate(candidate: CandidateEmployee, job: JobName): Promise<string> {
+    return await this.httpPostRequestParm('api/applicationForm', job.position, candidate);
   }
 
   async getJoboffers(): Promise<Array<Joboffer>> {
