@@ -85,6 +85,6 @@ export class HttpService {
   }
 
   async getId(): Promise<any> {
-    return await this.httpGetRequest('/api/user');
+    return await this.httpGetRequest('api/user');
   }
 }
