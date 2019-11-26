@@ -17,17 +17,17 @@ export class PersonalDataComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.httpService.getId().then((userId) => {
+     this.httpService.getId().then((userId) => {
 
-    //   this.httpService.getEmployee(userId).then((person) => {
-    //     console.log('sdcwcwc');
-    //     this.result = person;
-    //  //   console.log(person);
-    //   }).catch((error) => {
-    //     console.log(error);
-    //   });
-    // });
-    // console.log(this.result);
+       this.httpService.getEmployee(userId).then((person) => {
+         console.log('sdcwcwc');
+         this.result = person;
+      //   console.log(person);
+       }).catch((error) => {
+         console.log(error);
+       });
+     });
+     console.log(this.result);
   }
 
   createEmployee() {

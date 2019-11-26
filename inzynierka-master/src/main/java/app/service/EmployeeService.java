@@ -40,7 +40,7 @@ public class EmployeeService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
         User user = userRepository.findByEmail(name);
-        user.setUserRole(userRoleRepository.findByRole("ROLE_EMPLOYEE"));
+        //user.setUserRole(userRoleRepository.findByRole("ROLE_EMPLOYEE"));
         employee.setUser(user);
         employeeRepository.save(employee);
     }
@@ -58,8 +58,10 @@ public class EmployeeService {
     }
 
     public Employee getEmployee(Long id) {
-        return employeeRepository.findById(id).orElseThrow(() ->
+        Employee employee = employeeRepository.findById(id).orElseThrow(() ->
                 new NoSuchElementException("Not found"));
+        employee.setUser(null);
+        return employee;
     }
 
     public void removeEmployee(Long id) {
