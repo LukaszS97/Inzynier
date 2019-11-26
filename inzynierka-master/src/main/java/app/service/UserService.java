@@ -42,10 +42,22 @@ public class UserService {
         this.userRoleRepository = userRoleRepository;
     }
 
-
+/*
     public void addWithDefaultRole(User user) {
         UserRole defaultRole = userRoleRepository.findByRole(DEFAULT_ROLE);
         user.setUserRole(defaultRole);
+        String passwordHash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(passwordHash);
+        Date date = new Date();
+        user.setRegistrationDate(date);
+        userRepository.save(user);
+    }
+
+ */
+
+    public void addUser(User user, String role) {
+        UserRole userRole = userRoleRepository.findByRole(role);
+        user.setUserRole(userRole);
         String passwordHash = passwordEncoder.encode(user.getPassword());
         user.setPassword(passwordHash);
         Date date = new Date();
@@ -66,4 +78,7 @@ public class UserService {
         String email = auth.getName(); //get logged in username
         return userRepository.findByEmail(email).getId_user();
     }
+
+
 }
+
