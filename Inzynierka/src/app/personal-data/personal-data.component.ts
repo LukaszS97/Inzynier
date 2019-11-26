@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Employee } from '../models/employee';
 import { User } from '../models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personal-data',
@@ -11,23 +12,22 @@ import { User } from '../models/User';
 export class PersonalDataComponent implements OnInit {
   employee: Employee = new Employee();
   visible = false;
+  visible1 = false;
   button = 'Pokaż';
   result: Employee;
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private router: Router) { }
 
 
   ngOnInit() {
-     this.httpService.getId().then((userId) => {
+    this.httpService.getId().then((userId) => {
 
-       this.httpService.getEmployee(userId).then((person) => {
-         console.log('sdcwcwc');
-         this.result = person;
-      //   console.log(person);
-       }).catch((error) => {
-         console.log(error);
-       });
-     });
-     console.log(this.result);
+      this.httpService.getEmployee(userId).then((person) => {
+        this.result = person;
+        if (this.result) {
+          this.visible1 = true;
+        }
+      });
+    });
   }
 
   createEmployee() {
