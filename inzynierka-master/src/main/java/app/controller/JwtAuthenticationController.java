@@ -17,11 +17,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -59,12 +55,12 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @RequestMapping(path = "/register",
+    @RequestMapping(path = "/register/{role}",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> addUser(@RequestBody @Valid User user, BindingResult bindingResult){
+    public ResponseEntity<?> addUser(@RequestBody @Valid User user, @PathVariable String role, BindingResult bindingResult){
         if(!bindingResult.hasErrors()){
-            userService.addWithDefaultRole(user);
+            userService.addUser(user,role);
             return ResponseEntity.ok("Created");
         }else return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Not created");
     }

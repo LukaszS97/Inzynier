@@ -88,9 +88,12 @@ export class HttpService {
 
   async getId(): Promise<any> {
     return await this.httpGetRequest('api/user');
+<<<<<<< HEAD
+=======
   }
 
   async getEmployee(idUser): Promise<any> {
     return await this.httpGetRequest('api/employee', idUser);
+>>>>>>> a645240c737169c939b207ce0f0f8ad7da463faa
   }
 }

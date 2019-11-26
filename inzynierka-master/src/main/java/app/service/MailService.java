@@ -1,5 +1,6 @@
 package app.service;
 
+import app.model.Mail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -18,12 +19,12 @@ public class MailService {
         this.javaMailSender = javaMailSender;
     }
 
-    public void sendMail(String to, String subject, String text, boolean isHtmlContent) throws MessagingException {
+    public void sendMail(Mail mail, boolean isHtmlContent) throws MessagingException {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
-        mimeMessageHelper.setTo(to);
-        mimeMessageHelper.setSubject(subject);
-        mimeMessageHelper.setText(text, isHtmlContent);
+        mimeMessageHelper.setTo(mail.getTo());
+        mimeMessageHelper.setSubject(mail.getSubject());
+        mimeMessageHelper.setText(mail.getText(), isHtmlContent);
         javaMailSender.send(mimeMessage);
     }
 }
