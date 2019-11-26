@@ -7,6 +7,7 @@ import { LoginResult } from './models/login-result';
 import { AuthService } from './auth.service';
 import { Joboffer } from './models/joboffer';
 import { CandidateEmployee } from './models/candidate-employee';
+import { UserRole } from './models/user-role';
 
 
 
@@ -60,8 +61,9 @@ export class HttpService {
     });
   }
 
-  async addUser(user: User): Promise<string> {
-    return await this.httpPostRequest('register', user);
+  async addUser(user: User, role: UserRole): Promise<any> {
+    console.log(role.userRole);
+    return await this.http.post<any>(`http://localhost:8080/register/${role.userRole}`, user);
   }
 
   async login(user: User): Promise<LoginResult> {

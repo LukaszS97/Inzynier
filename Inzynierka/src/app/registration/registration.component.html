@@ -16,6 +16,18 @@
               <td><input type="text" id="password" [(ngModel)]="user.password" class="w3-input w3-padding-S16 w3-border"
                   name="password"></td>
             </tr>
+            <tr>
+              <td>Rola użytkownika</td>
+              <td>
+                  <select  name="role" [(ngModel)]="role.userRole" class="w3-input w3-padding-S16 w3-border">
+                      <option>ROLE_ADMIN</option>
+                      <option>ROLE_BOSS</option>
+                      <option>ROLE_MANAGER</option>
+                      <option>ROLE_HUMAN_RESOURCES</option>
+                      <option>ROLE_ACCOUNTANT</option>
+                      <option>ROLE_EMPLOYEE</option>
+                    </select>
+            </tr>
             <td align="center" colspan="2"><button type="submit" class="w3-button w3-blue">Dodaj pracownika</button></td>
           </tbody>
         </table>
