@@ -80,10 +80,10 @@ public class UserService {
     }
 
 
-    public String getUserRole(Long id) {
-        User user = userRepository.findById(id).orElseThrow(() ->
-                new NoSuchElementException("Not found"));
-        return user.getUserRole().getRole();
+    public String getUserRole() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName(); //get logged in username
+        return userRepository.findByEmail(email).getUserRole().getRole();
     }
 }
 
