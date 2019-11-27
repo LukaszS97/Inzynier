@@ -80,5 +80,10 @@ public class UserService {
     }
 
 
+    public String getUserRole(Long id) {
+        User user = userRepository.findById(id).orElseThrow(() ->
+                new NoSuchElementException("Not found"));
+        return user.getUserRole().getRole();
+    }
 }
 

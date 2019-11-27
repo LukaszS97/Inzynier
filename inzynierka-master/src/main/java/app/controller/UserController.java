@@ -37,5 +37,13 @@ public class UserController {
     public long getIdUser() {
         return userService.getId();
     }
+
+    @RequestMapping(path = "/{id}/userRole",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getUserRole(@PathVariable Long id){
+        return userService.getUserRole(id);
+    }
+
 }
 
