@@ -3,6 +3,7 @@ package app.controller;
 import javax.validation.Valid;
 
 import app.model.Employee;
+import app.model.StringResponse;
 import app.model.User;
 import app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class UserController {
     @RequestMapping(path = "/userRole",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getUserRole(){
+    public StringResponse getUserRole(){
         return userService.getUserRole();
     }
 

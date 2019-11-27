@@ -1,6 +1,7 @@
 package app.service;
 
 import app.model.Employee;
+import app.model.StringResponse;
 import app.model.User;
 import app.model.UserRole;
 import app.repository.EmployeeRepository;
@@ -80,10 +81,11 @@ public class UserService {
     }
 
 
-    public String getUserRole() {
+    public StringResponse getUserRole() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName(); //get logged in username
-        return userRepository.findByEmail(email).getUserRole().getRole();
+        StringResponse stringResponse = new StringResponse(userRepository.findByEmail(email).getUserRole().getRole());
+        return stringResponse; 
     }
 }
 
