@@ -13,6 +13,7 @@ import { LoginResult } from '../models/login-result';
 })
 export class LoginComponent implements OnInit {
   user: User = new User();
+
   constructor(private httpService: HttpService, private authSerive: AuthService, private router: Router) { }
 
   ngOnInit() {

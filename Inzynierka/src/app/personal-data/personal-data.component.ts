@@ -15,12 +15,12 @@ export class PersonalDataComponent implements OnInit {
   visible1 = false;
   button = 'Pokaż';
   result: Employee;
+  userRole;
   constructor(private httpService: HttpService, private router: Router) { }
 
 
   ngOnInit() {
     this.httpService.getId().then((userId) => {
-
       this.httpService.getEmployee(userId).then((person) => {
         this.result = person;
         if (this.result) {
@@ -28,6 +28,7 @@ export class PersonalDataComponent implements OnInit {
         }
       });
     });
+
   }
 
   createEmployee() {
