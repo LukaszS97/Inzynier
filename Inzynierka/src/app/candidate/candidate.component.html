@@ -2,46 +2,54 @@
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Wysyłanie formularza zgłoszeniowego.</span></h5>
     <div [hidden]="submitted" style="width: auto;">
-    <form (ngSubmit)="addCandidate()">
-      <table style="margin: auto;">
-        <tr>
-          <td>Imię</td>
-          <td><input [(ngModel)]="candidate.firstName" type="text" id="firstName" name="firstName" class="w3-input w3-padding-16 w3-border"></td>
-        </tr>
-        <tr>
-          <td>Nazwisko</td>
-          <td><input [(ngModel)]="candidate.lastName" type="text" id="lastName" name="lastName" class="w3-input w3-padding-S16 w3-border"></td>
-        </tr>
-        <tr>
-          <td>E-mail</td>
-          <td><input [(ngModel)]="candidate.email" type="text" id="email" name="email" class="w3-input w3-padding-S16 w3-border"></td>
-        </tr>
-        <tr>
-          <td>Nr. telefonu</td>
-          <td><input [(ngModel)]="candidate.phonnNumber" type="text" id="phonnNumber" name="phonnNumber" class="w3-input w3-padding-S16 w3-border"></td>
-        </tr>
-        <tr>
-          <td>Edukacja</td>
-          <td><input [(ngModel)]="candidate.education" type="text" id="education" name="education" class="w3-input w3-padding-S16 w3-border"></td>
-        </tr>
-        <tr>
-          <td>Doświadczenie</td>
-          <td><input [(ngModel)]="candidate.experience" type="text" id="experience" name="experience" class="w3-input w3-padding-S16 w3-border"></td>
-        </tr>
-        <tr>
-          <td>Wprowadź nazwę posady, do której aplikujesz</td>
-          <td><input [(ngModel)]="candidate.position" type="text" id="position" name="position" class="w3-input w3-padding-S16 w3-border"></td>
-        </tr>
-        <tr>
-          <td><button type="submit" class="w3-button w3-blue">Zatwierdź</button></td>
-          <td><button type="reset" (click)="jobOffers()" class="w3-button w3-red">Wróć do ofert pracy</button></td>
-        </tr>
-      </table>
-    </form>
+      <form (ngSubmit)="addCandidate()">
+        <table style="margin: auto;">
+          <tr>
+            <td>Imię</td>
+            <td><input [(ngModel)]="candidate.firstName" type="text" id="firstName" name="firstName"
+                class="w3-input w3-padding-16 w3-border"></td>
+          </tr>
+          <tr>
+            <td>Nazwisko</td>
+            <td><input [(ngModel)]="candidate.lastName" type="text" id="lastName" name="lastName"
+                class="w3-input w3-padding-S16 w3-border"></td>
+          </tr>
+          <tr>
+            <td>E-mail</td>
+            <td><input [(ngModel)]="candidate.email" type="text" id="email" name="email"
+                class="w3-input w3-padding-S16 w3-border"></td>
+          </tr>
+          <tr>
+            <td>Nr. telefonu</td>
+            <td><input [(ngModel)]="candidate.phonnNumber" type="text" id="phonnNumber" name="phonnNumber"
+                class="w3-input w3-padding-S16 w3-border"></td>
+          </tr>
+          <tr>
+            <td>Edukacja</td>
+            <td><input [(ngModel)]="candidate.education" type="text" id="education" name="education"
+                class="w3-input w3-padding-S16 w3-border"></td>
+          </tr>
+          <tr>
+            <td>Doświadczenie</td>
+            <td><input [(ngModel)]="candidate.experience" type="text" id="experience" name="experience"
+                class="w3-input w3-padding-S16 w3-border"></td>
+          </tr>
+          <tr>
+            <td>Wprowadź nazwę posady, do której aplikujesz</td>
+            <td>
+              <select name="role" [(ngModel)]="job.position" class="w3-input w3-padding-S16 w3-border">
+                <option *ngFor="let ok of jobsList">{{ok.position}}</option>
+              </select></td>
+          </tr>
+          <tr>
+            <td><button type="submit" class="w3-button w3-blue">Zatwierdź</button></td>
+            <td><button type="reset" (click)="jobOffers()" class="w3-button w3-red">Wróć do ofert pracy</button></td>
+          </tr>
+        </table>
+      </form>
+    </div>
   </div>
-  </div>
-  </div>
-  <div class="komunikat" [hidden]="!submitted">
-    <h4>Pomyślnie wysłano formularz zgłoszeniowy.</h4>
-  </div>
-
+</div>
+<div class="komunikat" [hidden]="!submitted">
+  <h4>Pomyślnie wysłano formularz zgłoszeniowy.</h4>
+</div>

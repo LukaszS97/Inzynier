@@ -6,5 +6,4 @@ export class CandidateEmployee {
   firstName?;
   lastName?;
   phonnNumber?;
-  position?;
 }

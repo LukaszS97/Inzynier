@@ -1,40 +1,67 @@
 <div class="w3-container" id="personalData">
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Twoje dane osobowe</span></h5>
-    twoje dane osobowe
+    <div *ngIf="visible1">
+      <h3 style="text-align: center;">Witaj {{result.firstName}} {{result.lastName}}!</h3>
+      <h5>Twoje dane osobowe: </h5>
+      <table>
+        <tbody>
+          <tr>
+            <td>Imię:</td>
+            <td>{{result.firstName}}</td>
+          </tr>
+          <tr>
+            <td>Nazwisko:</td>
+            <td>{{result.lastName}}</td>
+          </tr>
+          <tr>
+            <td>Adres:</td>
+            <td>{{result.address}}</td>
+          </tr>
+          <tr>
+            <td>Nr. tel.:</td>
+            <td>{{result.phoneNumber}}</td>
+          </tr>
+          <tr>
+            <td>Nr. rachunku bankowego:</td>
+            <td>{{result.bankAccountNumber}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align: center; color: red" *ngIf="!visible1">
+      Nie wprowadziłeś jeszcze swoich danych osobowych!
+    </div>
     <br><br>
-    <h3 style="text-align: center;">Edytuj swoje dane osobowe:</h3>
+    <h5>Edytuj swoje dane osobowe: <button (click)="showHideForm()" class="w3-button w3-blue">{{button}} formularz</button></h5>
     <div style="width: auto;">
-      <h6 style="text-align: center;"><button (click)="showHideForm()" class="w3-button w3-blue">{{button}}
-          formularz</button></h6>
       <div *ngIf="visible">
         <form>
           <table style="margin: auto;">
             <tbody>
               <tr>
-                <td>Imię</td>
+                <td>Imię:</td>
                 <td><input [(ngModel)]="employee.firstName" name="firstname" class="w3-input w3-padding-16 w3-border" />
                 </td>
               </tr>
               <tr>
-                <td>Nazwisko</td>
+                <td>Nazwisko:</td>
                 <td><input [(ngModel)]="employee.lastName" name="lastname" class="w3-input w3-padding-16 w3-border" />
                 </td>
               </tr>
               <tr>
-                <td>Nr. Tel.</td>
+                <td>Adres:</td>
+                <td><input [(ngModel)]="employee.address" name="address" class="w3-input w3-padding-16 w3-border" />
+                </td>
+              </tr>
+              <tr>
+                <td>Nr. Tel.:</td>
                 <td><input [(ngModel)]="employee.phoneNumber" name="tel" class="w3-input w3-padding-16 w3-border" />
                 </td>
               </tr>
               <tr>
-                <td>Nr. konta</td>
-                <td><input [(ngModel)]="employee.bankAccountNumber" name="bank"
-                    class="w3-input w3-padding-16 w3-border" /></td>
-              </tr>
-              <tr>
-                <td>Adres</td>
-                <td><input [(ngModel)]="employee.address" name="address" class="w3-input w3-padding-16 w3-border" />
-                </td>
+                <td>Nr. rachunku bankowego:</td>
+                <td><input [(ngModel)]="employee.bankAccountNumber" name="bank" class="w3-input w3-padding-16 w3-border" /></td>
               </tr>
               <tr>
                 <td><button (click)="createEmployee()" class="w3-button w3-blue">Zapisz zmiany</button></td>
