@@ -38,7 +38,7 @@ export class HttpService {
   //get z lub bez parametru
   public httpGetRequest(actionName: string, params: string = ''): Promise<any> {
     return new Promise((resolve) => {
-      this.http.get<any>(`http://localhost:8080/${actionName}/${params}`, { observe: 'response' })
+      this.http.get<any>(`http://localhost:8080/${actionName}/${params}`, {observe: 'response'})
         .subscribe((response: HttpResponse<any>) => {
           if (response.status >= 200 && response.status < 300) {
             resolve(response.body);
@@ -102,6 +102,10 @@ export class HttpService {
 
   async getId(): Promise<any> {
     return await this.httpGetRequest('api/user');
+  }
+
+  async getUserRole(): Promise<any> {
+    return await this.httpGetRequest('api/user/userRole');
   }
 
   async getEmployee(idUser): Promise<any> {

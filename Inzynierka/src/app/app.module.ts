@@ -25,6 +25,11 @@ import { AuthGuardService } from './auth-guard.service';
 import { BasicAuthInterceptor } from './basic-auth-interceptor.service';
 import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
 import { CandidateComponent } from './candidate/candidate.component';
+import { MenuAfterLoginBossComponent } from './menu-after-login-boss/menu-after-login-boss.component';
+import { MenuAfterLoginManagerComponent } from './menu-after-login-manager/menu-after-login-manager.component';
+import { MenuAfterLoginHumanResourcesComponent } from './menu-after-login-human-resources/menu-after-login-human-resources.component';
+import { MenuAfterLoginAccountantComponent } from './menu-after-login-accountant/menu-after-login-accountant.component';
+import { MenuAfterLoginEmployeeComponent } from './menu-after-login-employee/menu-after-login-employee.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,12 @@ import { CandidateComponent } from './candidate/candidate.component';
     RegistrationComponent,
     VacationComponent,
     AddJobOfferComponent,
-    CandidateComponent
+    CandidateComponent,
+    MenuAfterLoginBossComponent,
+    MenuAfterLoginManagerComponent,
+    MenuAfterLoginHumanResourcesComponent,
+    MenuAfterLoginAccountantComponent,
+    MenuAfterLoginEmployeeComponent
   ],
   imports: [
     BrowserModule,

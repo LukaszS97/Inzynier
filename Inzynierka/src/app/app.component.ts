@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
+import { HttpService } from './http.service';
 
 
 @Component({
@@ -9,7 +10,14 @@ import { AuthService } from './auth.service';
 })
 export class AppComponent {
   title = 'Inzynierka';
-  constructor(public authService: AuthService) { }
+
+  public userRole: string;
+
+  constructor(public authService: AuthService, public httpService: HttpService) {
+    this.httpService.getUserRole().then((userRole) => {
+      this.userRole = userRole.response;
+    });
   }
+}
 
 
