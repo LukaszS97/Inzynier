@@ -2,7 +2,13 @@
     <div class="w3-content" style="max-width:700px">
       <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Dostępne CV</span></h5>
       <div *ngFor="let cv of cvList">
-        {{cv.email}}
+        Imię: {{cv.firstName}}
+        Nazwisko: {{cv.lastName}}
+        Email: {{cv.email}}
+        Numer tel.: {{cv.phonnNumber}}
+        Wykształcenie: {{cv.education}}
+        Doświadczenie: {{cv.experience}}
+        Nazwa posady do której aplikuję: {{cv.id}}
       </div>
     </div>
   </div>

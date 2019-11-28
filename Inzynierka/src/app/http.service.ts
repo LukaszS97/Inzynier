@@ -88,6 +88,19 @@ export class HttpService {
     });
   }
 
+  public httpDeleteRequest(actionName: string, params: string = ''): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.delete<any>(`http://localhost:8080/${actionName}/${params}`, {observe: 'response'})
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+
    async addUser(user: User, role: UserRole): Promise<string> {
     return await this.httpPostRequestParm('register', role.userRole,  user);
   }
@@ -126,5 +139,9 @@ export class HttpService {
 
   async getEmployee(idUser): Promise<any> {
     return await this.httpGetRequest('api/employee', idUser);
+  }
+
+  async deleteEmployee(idUser): Promise<any> {
+    return await this.httpDeleteRequest('api/employee', idUser);
   }
 }
