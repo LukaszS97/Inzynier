@@ -31,4 +31,8 @@ public class ApplicationFormService {
         applicationForm.setJobOffer(jobOffer);
         applicationFormRepository.save(applicationForm);
     }
+
+    public List<ApplicationForm> showApplicationForms() {
+        return applicationFormRepository.findAll();
+    }
 }

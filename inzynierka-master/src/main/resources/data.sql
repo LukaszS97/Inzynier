@@ -4,3 +4,6 @@ insert into user_role(role, description) VALUES ("ROLE_MANAGER", "default role f
 insert into user_role(role, description) VALUES ("ROLE_HUMAN_RESOURCES", "default role for human_resources");
 insert into user_role(role, description) VALUES ("ROLE_ACCOUNTANT", "default role for accountant");
 insert into user_role(role, description) VALUES ("ROLE_EMPLOYEE", "default role for employee");
+
+
+

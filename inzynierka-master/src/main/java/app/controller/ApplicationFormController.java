@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/applicationForm")
+@CrossOrigin
 public class ApplicationFormController {
 
     private ApplicationFormService applicationFormService;
@@ -33,7 +34,13 @@ public class ApplicationFormController {
         } else return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Not created");
     }
 
-    
+    @RequestMapping(method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ApplicationForm> getApplicationForms() {
+        return applicationFormService.showApplicationForms();
+    }
+
+
 
 
 }

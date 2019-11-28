@@ -72,6 +72,8 @@ public class JobOffer implements Serializable {
         this.applicationForms = applicationForms;
     }
 
+
+
     @Override
     public String toString() {
         return "JobOffer{" +
