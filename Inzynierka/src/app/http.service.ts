@@ -112,6 +112,10 @@ export class HttpService {
     return await this.httpGetRequest('api/joboffer');
   }
 
+  async getCV(): Promise<Array<CandidateEmployee>> {
+    return await this.httpGetRequest('api/applicationForm');
+  }
+
   async getId(): Promise<any> {
     return await this.httpGetRequest('api/user');
   }
