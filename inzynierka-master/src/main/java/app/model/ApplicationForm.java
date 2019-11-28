@@ -1,5 +1,7 @@
 package app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -17,6 +19,7 @@ public class ApplicationForm implements Serializable {
     private String education;
     @ManyToOne
     @JoinColumn(name = "jobOffer_id")
+    @JsonIgnore
     private JobOffer jobOffer;
 
     public Long getId() {

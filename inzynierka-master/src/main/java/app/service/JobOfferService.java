@@ -28,10 +28,6 @@ public class JobOfferService {
                 new NoSuchElementException("Not found"));
     }
 
-    public JobOffer getJobOffer(String position) {
-        return jobOfferRepository.findByPosition(position);
-    }
-
     public void saveJobOffer(JobOffer jobOffer) {
         jobOfferRepository.save(jobOffer);
     }
@@ -52,6 +48,10 @@ public class JobOfferService {
         JobOffer jobOffer = jobOfferRepository.findById(id).orElseThrow(()->
                 new NoSuchElementException("Not found"));
         jobOfferRepository.delete(jobOffer);
+    }
+
+    public JobOffer getJobOffer(String position) {
+        return jobOfferRepository.findByPosition(position);
     }
 }
 

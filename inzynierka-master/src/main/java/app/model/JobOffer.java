@@ -1,5 +1,7 @@
 package app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -16,6 +18,7 @@ public class JobOffer implements Serializable {
     private String niceToHave;
     private String conditions;
     @OneToMany(mappedBy = "jobOffer")
+    @JsonIgnore
     private List<ApplicationForm> applicationForms;
 
     public JobOffer() {}
