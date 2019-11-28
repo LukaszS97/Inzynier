@@ -19,22 +19,7 @@ export class HttpService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  //tą uzywac jesli mi nic nie zwraca
-
-  public httpActionRequest(actionName: string, requestData: any = {}): Promise<any> {
-    return new Promise((resolve) => {
-      this.http.post<any>(`http://localhost:8080/${actionName}`, requestData, { observe: 'response' })
-        .subscribe((response: HttpResponse<any>) => {
-
-          if (response.status >= 200 && response.status < 300) {
-            resolve(true);
-          } else {
-            resolve(false);
-          }
-        });
-    });
-  }
-  //get z lub bez parametru
+  // get z lub bez parametru *************************************************************************************************8
   public httpGetRequest(actionName: string, params: string = ''): Promise<any> {
     return new Promise((resolve) => {
       this.http.get<any>(`http://localhost:8080/${actionName}/${params}`, {observe: 'response'})
@@ -46,66 +31,6 @@ export class HttpService {
           }
         });
     });
-  }
-  // post, który coś zwraca
-  public httpPostRequest(actionName: string, requestData: any = {}): Promise<any> {
-    return new Promise((resolve) => {
-      this.http.post<any>(`http://localhost:8080/${actionName}`, requestData, { observe: 'response' })
-        .subscribe((response: HttpResponse<any>) => {
-          if (response.status >= 200 && response.status < 300) {
-            resolve(response.body);
-          } else {
-            resolve(false);
-          }
-        });
-    });
-  }
-  // put, który cos zwraca z parametrem
-  public httpPutRequest(actionName: string, params: string = '', requestData: any = {}): Promise<any> {
-    return new Promise((resolve) => {
-      this.http.put<any>(`http://localhost:8080/${actionName}/${params}`, requestData, { observe: 'response' })
-        .subscribe((response: HttpResponse<any>) => {
-          if (response.status >= 200 && response.status < 300) {
-            resolve(response.body);
-          } else {
-            resolve(false);
-          }
-        });
-    });
-  }
-
-  // post z parametrem , który coś zwraca
-  public httpPostRequestParm(actionName: string, params: string = '', requestData: any = {}): Promise<any> {
-    return new Promise((resolve) => {
-      this.http.post<any>(`http://localhost:8080/${actionName}/${params}`, requestData, { observe: 'response' })
-        .subscribe((response: HttpResponse<any>) => {
-          if (response.status >= 200 && response.status < 300) {
-            resolve(response.body);
-          } else {
-            resolve(false);
-          }
-        });
-    });
-  }
-
-   async addUser(user: User, role: UserRole): Promise<string> {
-    return await this.httpPostRequestParm('register', role.userRole,  user);
-  }
-
-  async login(user: User): Promise<LoginResult> {
-    return await this.httpPostRequest('authenticate', user);
-  }
-
-  async putEmployee( idUser, employee: Employee): Promise<string> {
-    return await this.httpPutRequest(`api/employee`, idUser, employee);
-  }
-
-  async addJoboffer(joboffer: Joboffer): Promise<string> {
-    return await this.httpPostRequest('api/joboffer', joboffer);
-  }
-
-  async addCandidate(candidate: CandidateEmployee, job: JobName): Promise<string> {
-    return await this.httpPostRequestParm('api/applicationForm', job.position, candidate);
   }
 
   async getJoboffers(): Promise<Array<Joboffer>> {
@@ -126,5 +51,86 @@ export class HttpService {
 
   async getEmployee(idUser): Promise<any> {
     return await this.httpGetRequest('api/employee', idUser);
+  }
+
+  // post, który coś zwraca ************************************************************************************************
+  public httpPostRequest(actionName: string, requestData: any = {}): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.post<any>(`http://localhost:8080/${actionName}`, requestData, { observe: 'response' })
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+
+  async login(user: User): Promise<LoginResult> {
+    return await this.httpPostRequest('authenticate', user);
+  }
+
+  async addJoboffer(joboffer: Joboffer): Promise<string> {
+    return await this.httpPostRequest('api/joboffer', joboffer);
+  }
+
+  // put, który cos zwraca z parametrem ************************************************************************************************
+  public httpPutRequest(actionName: string, params: string = '', requestData: any = {}): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.put<any>(`http://localhost:8080/${actionName}/${params}`, requestData, { observe: 'response' })
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+
+  async putEmployee( idUser, employee: Employee): Promise<string> {
+    return await this.httpPutRequest(`api/employee`, idUser, employee);
+  }
+
+  // post z parametrem , który coś zwraca ************************************************************************************************
+  public httpPostRequestParm(actionName: string, params: string = '', requestData: any = {}): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.post<any>(`http://localhost:8080/${actionName}/${params}`, requestData, { observe: 'response' })
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+
+  async addUser(user: User, role: UserRole): Promise<string> {
+    return await this.httpPostRequestParm('register', role.userRole,  user);
+  }
+
+  async addCandidate(candidate: CandidateEmployee, job: JobName): Promise<string> {
+    return await this.httpPostRequestParm('api/applicationForm', job.position, candidate);
+  }
+
+
+  // usuwanie danych  ************************************************************************************************
+  public httpDeleteRequest(actionName: string, params: string = ''): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.delete<any>(`http://localhost:8080/${actionName}/${params}`, {observe: 'response'})
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+
+  async deleteEmployee(idUser): Promise<any> {
+    return await this.httpDeleteRequest('api/employee', idUser);
   }
 }

@@ -2,15 +2,15 @@
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Wniosek o zwolnienie</span></h5>
     <div style="width: auto; text-align: center;">
-    Wniosek generuje się automatycznie wypełniając twoje dane osobowe.<br>
-    Podaj powód twojej rezygnacji z pracy:<br>
+    Wniosek generuje się automatycznie wypełniając twoje dane osobowe.<br><br>
+    <!-- Podaj powód twojej rezygnacji z pracy:<br> -->
       <form>
         <table style="margin: auto;">
-          <tr>
+          <!-- <tr>
             <td colspan="2"><textarea name="powod" cols="60" rows="5"></textarea></td>
-          </tr>
+          </tr> -->
           <tr>
-            <td><button class="w3-button w3-blue">Zatwierdź</button></td>
+            <td><button (click)="leave()" class="w3-button w3-blue">Zatwierdź</button></td>
             <td><button type="reset" class="w3-button w3-red">Anuluj</button></td>
           </tr>
         </table>
