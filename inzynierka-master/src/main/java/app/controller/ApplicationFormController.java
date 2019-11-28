@@ -23,16 +23,17 @@ public class ApplicationFormController {
     }
 
     //trzeba pozmieniac to id
-    @RequestMapping(path = "/{id}",
+    @RequestMapping(path = "/{position}",
             method= RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> postApplicationForm(@RequestBody ApplicationForm applicationForm, @PathVariable Long id, BindingResult bindingResult) {
+    public ResponseEntity<?> postApplicationForm(@RequestBody ApplicationForm applicationForm, @PathVariable String position, BindingResult bindingResult) {
         if (!bindingResult.hasErrors()) {
-            applicationFormService.saveApplicationForm(applicationForm, id);
+            applicationFormService.saveApplicationForm(applicationForm, position);
             return ResponseEntity.ok("created");
         } else return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Not created");
     }
 
+    
 
 
 }

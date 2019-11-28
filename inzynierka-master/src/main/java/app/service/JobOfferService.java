@@ -28,6 +28,10 @@ public class JobOfferService {
                 new NoSuchElementException("Not found"));
     }
 
+    public JobOffer getJobOffer(String position) {
+        return jobOfferRepository.findByPosition(position);
+    }
+
     public void saveJobOffer(JobOffer jobOffer) {
         jobOfferRepository.save(jobOffer);
     }

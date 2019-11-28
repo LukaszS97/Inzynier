@@ -26,8 +26,8 @@ public class ApplicationFormService {
         this.jobOfferService = jobOfferService;
     }
 
-    public void saveApplicationForm(ApplicationForm applicationForm, Long id) {
-        JobOffer jobOffer = jobOfferService.showJobOffer(id);
+    public void saveApplicationForm(ApplicationForm applicationForm, String position) {
+        JobOffer jobOffer = jobOfferService.getJobOffer(position);
         applicationForm.setJobOffer(jobOffer);
         applicationFormRepository.save(applicationForm);
     }
