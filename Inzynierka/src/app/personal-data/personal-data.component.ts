@@ -31,14 +31,16 @@ export class PersonalDataComponent implements OnInit {
 
   }
 
-  createEmployee() {
-    const result = this.httpService.createEmployee(this.employee);
-    if (result) {
-      this.button = 'Pokaż';
-      this.visible = false;
-    }
-
+  putEmployee() {
+    this.httpService.getId().then((userId) => {
+      const result = this.httpService.putEmployee(userId, this.employee);
+      if (result) {
+        this.button = 'Pokaż';
+        this.visible = false;
+      }
+    });
   }
+
   showHideForm() {
     this.visible = !this.visible;
     if (this.visible === true) {

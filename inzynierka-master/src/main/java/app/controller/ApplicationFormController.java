@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/applicationForm")
+@CrossOrigin
 public class ApplicationFormController {
 
     private ApplicationFormService applicationFormService;

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { User } from './models/User';
 import { Employee } from './models/employee';
 import { LoginResult } from './models/login-result';
@@ -61,6 +60,19 @@ export class HttpService {
         });
     });
   }
+  // put, który cos zwraca z parametrem
+  public httpPutRequest(actionName: string, params: string = '', requestData: any = {}): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.put<any>(`http://localhost:8080/${actionName}/${params}`, requestData, { observe: 'response' })
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
 
   // post z parametrem , który coś zwraca
   public httpPostRequestParm(actionName: string, params: string = '', requestData: any = {}): Promise<any> {
@@ -84,8 +96,8 @@ export class HttpService {
     return await this.httpPostRequest('authenticate', user);
   }
 
-  async createEmployee(employee: Employee): Promise<string> {
-    return await this.httpPostRequest(`api/employee`, employee);
+  async putEmployee( idUser, employee: Employee): Promise<string> {
+    return await this.httpPutRequest(`api/employee`, idUser, employee);
   }
 
   async addJoboffer(joboffer: Joboffer): Promise<string> {
