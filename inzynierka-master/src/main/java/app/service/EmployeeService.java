@@ -71,10 +71,11 @@ public class EmployeeService {
     }
 
     public void removeEmployee(Long id) {
-        employeeRepository.delete(employeeRepository.findById(id).orElseThrow(() ->
-                new NoSuchElementException("Not found")));
         userRepository.delete(userRepository.findById(id).orElseThrow(() ->
                 new NoSuchElementException("Not found")));
+        employeeRepository.delete(employeeRepository.findById(id).orElseThrow(() ->
+                new NoSuchElementException("Not found")));
+
     }
 
 }
