@@ -18,7 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
 public class UserService {
 
@@ -26,6 +25,7 @@ public class UserService {
     private UserRepository userRepository;
     private UserRoleRepository userRoleRepository;
     private PasswordEncoder passwordEncoder;
+    private EmployeeService employeeService;
 
 
     @Autowired
@@ -43,7 +43,12 @@ public class UserService {
         this.userRoleRepository = userRoleRepository;
     }
 
-/*
+    @Autowired
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    /*
     public void addWithDefaultRole(User user) {
         UserRole defaultRole = userRoleRepository.findByRole(DEFAULT_ROLE);
         user.setUserRole(defaultRole);
@@ -64,9 +69,11 @@ public class UserService {
         Date date = new Date();
         user.setRegistrationDate(date);
         userRepository.save(user);
+        employeeService.addNullEmployee(user);
+
     }
 
-    public void changePassword(String password, Long id){
+    public void changePassword(String password, Long id) {
         User user = userRepository.findById(id).orElseThrow(() ->
                 new NoSuchElementException("Not found"));
         user.setPassword(passwordEncoder.encode(password));
@@ -85,7 +92,7 @@ public class UserService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName(); //get logged in username
         StringResponse stringResponse = new StringResponse(userRepository.findByEmail(email).getUserRole().getRole());
-        return stringResponse; 
+        return stringResponse;
     }
 }
 

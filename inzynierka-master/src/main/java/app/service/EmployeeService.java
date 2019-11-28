@@ -45,6 +45,12 @@ public class EmployeeService {
         employeeRepository.save(employee);
     }
 
+    public void addNullEmployee(User user) {
+        Employee employee = new Employee();
+        employee.setUser(user);
+        employeeRepository.save(employee);
+    }
+
 
     public void editEmployeeData(Employee employee, Long id) {
         Employee employ = employeeRepository.findById(id).orElseThrow(() ->

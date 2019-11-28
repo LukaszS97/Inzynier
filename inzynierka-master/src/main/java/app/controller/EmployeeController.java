@@ -20,12 +20,14 @@ public class EmployeeController {
     public void setEmployeeService(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
-
+/*
     @RequestMapping(method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public void saveEmployeeData(@RequestBody Employee employee){
         employeeService.completeDataAfterFirstLogin(employee);
     }
+
+ */
 
     @RequestMapping(path = "/{id}",
             method = RequestMethod.PUT,
