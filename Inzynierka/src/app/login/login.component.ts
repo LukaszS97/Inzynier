@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     const result: LoginResult = await this.httpService.login(this.user);
     if (result) {
       this.authSerive.setApiToken(result);
-      this.router.navigate(['personal-data']);
+      this.router.navigate(['personal-data-share']);
     }
   }
 }

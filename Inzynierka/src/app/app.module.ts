@@ -31,6 +31,7 @@ import { MenuAfterLoginHumanResourcesComponent } from './menu-after-login-human-
 import { MenuAfterLoginAccountantComponent } from './menu-after-login-accountant/menu-after-login-accountant.component';
 import { MenuAfterLoginEmployeeComponent } from './menu-after-login-employee/menu-after-login-employee.component';
 import { CvComponent } from './cv/cv.component';
+import { PersonalDataShareComponent } from './personal-data-share/personal-data-share.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { CvComponent } from './cv/cv.component';
     MenuAfterLoginHumanResourcesComponent,
     MenuAfterLoginAccountantComponent,
     MenuAfterLoginEmployeeComponent,
-    CvComponent
+    CvComponent,
+    PersonalDataShareComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { Joboffer } from './models/joboffer';
 import { CandidateEmployee } from './models/candidate-employee';
 import { UserRole } from './models/user-role';
 import { JobName } from './models/job-name';
+import { Email } from './models/email';
 
 
 
@@ -65,6 +66,9 @@ export class HttpService {
           }
         });
     });
+  }
+  async sendEmail(email: Email): Promise<any> {
+    return await this.httpPostRequest('sendMail', email);
   }
 
   async login(user: User): Promise<LoginResult> {

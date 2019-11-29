@@ -18,6 +18,7 @@ import { MenuAfterLoginComponent } from './menu-after-login/menu-after-login.com
 import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
 import { CandidateComponent } from './candidate/candidate.component';
 import { CvComponent } from './cv/cv.component';
+import { PersonalDataShareComponent } from './personal-data-share/personal-data-share.component';
 
 
 const routes: Routes = [
@@ -37,7 +38,8 @@ const routes: Routes = [
   { path: 'menu', component: MenuAfterLoginComponent},
   { path: 'add-job-offer', component: AddJobOfferComponent, canActivate: [AuthGuardService]},
   { path: 'candidate', component: CandidateComponent},
-  { path: 'cv', component: CvComponent, canActivate: [AuthGuardService]}
+  { path: 'cv', component: CvComponent, canActivate: [AuthGuardService]},
+  { path: 'personal-data-share', component: PersonalDataShareComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

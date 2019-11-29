@@ -4,6 +4,7 @@
     <div [hidden]="submitted" style="width: auto;">
     <form (ngSubmit)="addJoboffer()">
       <table style="margin: auto;">
+        <tbody>
         <tr>
           <td>Warunki</td>
           <td><input [(ngModel)]="joboffer.conditions" type="text" id="conditions" name="conditions" class="w3-input w3-padding-16 w3-border"></td>
@@ -28,6 +29,7 @@
           <td><button type="submit" class="w3-button w3-blue">Zatwierdź</button></td>
           <td><button type="reset" class="w3-button w3-red">Anuluj</button></td>
         </tr>
+      </tbody>
       </table>
     </form>
   </div>

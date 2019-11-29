@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { CandidateEmployee } from '../models/candidate-employee';
+import { Email } from '../models/email';
 
 @Component({
   selector: 'app-cv',
@@ -10,6 +11,8 @@ import { CandidateEmployee } from '../models/candidate-employee';
 export class CvComponent implements OnInit {
 
   cvList: Array<CandidateEmployee>;
+  submit = true;
+  email: Email;
 
   constructor(private httpService: HttpService) { }
 
@@ -19,4 +22,13 @@ export class CvComponent implements OnInit {
     });
   }
 
+  showEmail() {
+    this.submit = false;
+  }
+  hideEmail() {
+    this.submit = true;
+  }
+  sendEmail() {
+    this.httpService.sendEmail(this.email);
+  }
 }

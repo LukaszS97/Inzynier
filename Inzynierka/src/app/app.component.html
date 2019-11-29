@@ -3,24 +3,27 @@
     <div *ngIf="!authService.isSignedIn">
       <app-start-menu></app-start-menu>
     </div>
-    <div *ngIf="authService.isSignedIn && userRole=='ROLE_ADMIN'">
+    <div *ngIf="authService.isSignedIn && userRole=='ROLE_ADMIN' && result.lastName!=NULL">
         <app-menu-after-login></app-menu-after-login>
     </div>
-    <div *ngIf="authService.isSignedIn && userRole=='ROLE_BOSS'">
+    <div *ngIf="authService.isSignedIn && userRole=='ROLE_BOSS' && result.lastName!=NULL">
         <app-menu-after-login-boss></app-menu-after-login-boss>
     </div>
-    <div *ngIf="authService.isSignedIn && userRole=='ROLE_MANAGER'">
+    <div *ngIf="authService.isSignedIn && userRole=='ROLE_MANAGER' && result.lastName!=NULL">
         <app-menu-after-login-manager></app-menu-after-login-manager>
     </div>
-    <div *ngIf="authService.isSignedIn && userRole=='ROLE_HUMAN_RESOURCES'">
+    <div *ngIf="authService.isSignedIn && userRole=='ROLE_HUMAN_RESOURCES' && result.lastName!=NULL">
         <app-menu-after-login-human-resources></app-menu-after-login-human-resources>
     </div>
-    <div *ngIf="authService.isSignedIn && userRole=='ROLE_ACCOUNTANT'">
+    <div *ngIf="authService.isSignedIn && userRole=='ROLE_ACCOUNTANT' && result.lastName!=NULL">
         <app-menu-after-login-accountant></app-menu-after-login-accountant>
     </div>
-    <div *ngIf="authService.isSignedIn && userRole=='ROLE_EMPLOYEE'">
+    <div *ngIf="authService.isSignedIn && userRole=='ROLE_EMPLOYEE' && result.lastName!=NULL">
         <app-menu-after-login-employee></app-menu-after-login-employee>
     </div>
+    <div *ngIf="authService.isSignedIn && result.lastName==NULL">
+      Korzystanie z aplikacji bedzie możliwe po wprowadzeniu danych osobowych.
+  </div>
   </div>
 </div>
 <router-outlet></router-outlet>

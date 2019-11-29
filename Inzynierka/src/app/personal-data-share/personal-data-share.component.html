@@ -1,36 +1,7 @@
 <div class="w3-container" id="personalData">
   <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Twoje dane osobowe</span></h5>
-      <h3 style="text-align: center;">Witaj {{result.firstName}} {{result.lastName}}!</h3>
-      <h5>Twoje dane osobowe: </h5>
-      <table>
-        <tbody>
-          <tr>
-            <td>Imię:</td>
-            <td>{{result.firstName}}</td>
-          </tr>
-          <tr>
-            <td>Nazwisko:</td>
-            <td>{{result.lastName}}</td>
-          </tr>
-          <tr>
-            <td>Adres:</td>
-            <td>{{result.address}}</td>
-          </tr>
-          <tr>
-            <td>Nr. tel.:</td>
-            <td>{{result.phoneNumber}}</td>
-          </tr>
-          <tr>
-            <td>Nr. rachunku bankowego:</td>
-            <td>{{result.bankAccountNumber}}</td>
-          </tr>
-        </tbody>
-      </table>
-    <br><br>
-    <h5>Edytuj swoje dane osobowe: <button (click)="showHideForm()" class="w3-button w3-blue">{{button}} formularz</button></h5>
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Dodaj swoje dane osobowe: </span></h5>
     <div style="width: auto;">
-      <div *ngIf="visible">
         <form>
           <table style="margin: auto;">
             <tbody>
@@ -68,4 +39,3 @@
       </div>
     </div>
   </div>
-</div>
