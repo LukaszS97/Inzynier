@@ -76,8 +76,4 @@ public class JwtAuthenticationController {
         }
     }
 
-    @RequestMapping({ "/hello" })
-    public String firstPage() {
-        return "Hello World";
-    }
 }

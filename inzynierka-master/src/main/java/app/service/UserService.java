@@ -9,6 +9,7 @@ import app.repository.UserRepository;
 import app.repository.UserRoleRepository;
 
 import java.util.Date;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,6 +94,10 @@ public class UserService {
         String email = auth.getName(); //get logged in username
         StringResponse stringResponse = new StringResponse(userRepository.findByEmail(email).getUserRole().getRole());
         return stringResponse;
+    }
+
+    public List<User> getUsers() {
+        return userRepository.findAll();
     }
 }
 

@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/user")
@@ -39,10 +41,17 @@ public class UserController {
         return userService.getId();
     }
 
+    @RequestMapping(path = "/users", method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<User> getAllUsers() {
+        return userService.getUsers();
+    }
+
+
     @RequestMapping(path = "/userRole",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public StringResponse getUserRole(){
+    public StringResponse getUserRole() {
         return userService.getUserRole();
     }
 

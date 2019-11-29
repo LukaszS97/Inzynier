@@ -18,13 +18,16 @@ public class User {
     @Column
     private String email;
     @Column
+    @JsonIgnore
     private String password;
     private Date registrationDate;
     @ManyToOne
     @JoinColumn(name = "user_role_id")
+    @JsonIgnore
     private UserRole userRole;
     @OneToOne(mappedBy = "user",
-    cascade = CascadeType.PERSIST)
+    cascade = CascadeType.ALL)
+    @JsonIgnore
     private Employee employee;
 
     public Long getId_user() {
