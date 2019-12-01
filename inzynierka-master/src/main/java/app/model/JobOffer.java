@@ -76,7 +76,6 @@ public class JobOffer implements Serializable {
     }
 
 
-
     @Override
     public String toString() {
         return "JobOffer{" +
@@ -86,7 +85,6 @@ public class JobOffer implements Serializable {
                 ", requirements='" + requirements + '\'' +
                 ", niceToHave='" + niceToHave + '\'' +
                 ", conditions='" + conditions + '\'' +
-                ", applicationForms=" + applicationForms +
                 '}';
     }
 }

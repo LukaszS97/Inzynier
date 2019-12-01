@@ -15,7 +15,7 @@ import javax.validation.Valid;
 public class EmployeeController {
 
     private EmployeeService employeeService;
- 
+
     @Autowired
     public void setEmployeeService(EmployeeService employeeService) {
         this.employeeService = employeeService;
@@ -46,7 +46,9 @@ public class EmployeeController {
     @RequestMapping(path = "/{id}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public void deleteEmployee(@PathVariable Long id){
+    public void deleteEmployee(@PathVariable Long id) {
         employeeService.removeEmployee(id);
     }
+
+
 }

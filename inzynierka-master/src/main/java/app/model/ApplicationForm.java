@@ -84,4 +84,17 @@ public class ApplicationForm implements Serializable {
 
     public ApplicationForm() {
     }
+
+    @Override
+    public String toString() {
+        return "ApplicationForm{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", experience='" + experience + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", education='" + education + '\'' +
+                '}';
+    }
 }

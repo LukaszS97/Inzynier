@@ -2,16 +2,18 @@ package app.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-public class Employee {
+public class Employee implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-   // @NotEmpty
+    // @NotEmpty
     private String firstName;
-   // @NotEmpty
+    // @NotEmpty
     private String lastName;
     //@NotEmpty
     private String address;
@@ -22,6 +24,8 @@ public class Employee {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
+    @OneToMany(mappedBy = "employee")
+    private List<WorkSchedule> workSchedule;
 
     public String getFirstName() {
         return firstName;
@@ -79,5 +83,26 @@ public class Employee {
         this.id = id;
     }
 
-    public Employee() {}
+    public List<WorkSchedule> getWorkSchedule() {
+        return workSchedule;
+    }
+
+    public void setWorkSchedule(List<WorkSchedule> workSchedule) {
+        this.workSchedule = workSchedule;
+    }
+
+    public Employee() {
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", bankAccountNumber='" + bankAccountNumber + '\'' +
+                '}';
+    }
 }
