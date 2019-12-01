@@ -34,6 +34,10 @@ export class HttpService {
     });
   }
 
+  async getUsers(): Promise<Array<User>> {
+    return await this.httpGetRequest('api/user/users');
+  }
+
   async getJoboffers(): Promise<Array<Joboffer>> {
     return await this.httpGetRequest('api/joboffer');
   }

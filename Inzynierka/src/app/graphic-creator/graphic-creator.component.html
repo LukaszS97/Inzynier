@@ -1,0 +1,32 @@
+<div class="bgimg w3-container" id="graphic">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Grafik kreator</span></h5>
+    <div>
+      <table style="margin: auto;">
+        <tbody>
+          <tr>
+            <td>Wybierz pracownika:</td>
+            <td>
+              <select name="user" [(ngModel)]="user" class="w3-input w3-padding-S16 w3-border">
+                <option *ngFor="let user of usersList"> {{user.email}} </option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Wybierz datę rozpoczęcia pracy:</td>
+            <td><input class="date" type="date" name="data" [(ngModel)]="grafik.fromDate">, godzina <input class="hour" type="text" name="hour"
+                [(ngModel)]="grafik.fromHour"></td>
+          </tr>
+          <tr>
+            <td>Wybierz datę zakończenia pracy:</td>
+            <td><input class="date" type="date" name="data" [(ngModel)]="grafik.toDate">, godzina <input class="hour" type="text" name="hour"
+                [(ngModel)]="grafik.toHour"></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;" colspan="2" ><button class="w3-button w3-blue" (click)="addToList()">Zatwierdź</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

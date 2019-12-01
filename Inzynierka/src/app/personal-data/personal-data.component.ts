@@ -12,7 +12,7 @@ export class PersonalDataComponent implements OnInit {
   employee: Employee = new Employee();
   visible = false;
   button = 'Pokaż';
-  result: Employee;
+  result: Employee = new Employee();
   userRole;
   constructor(private httpService: HttpService, private router: Router) { }
 

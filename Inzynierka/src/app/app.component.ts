@@ -11,7 +11,7 @@ import { Employee } from './models/employee';
 export class AppComponent implements OnInit{
   title = 'Inzynierka';
   public userRole: string;
-  public result: Employee;
+  public result: Employee = new Employee();
   constructor(public authService: AuthService, public httpService: HttpService) {
 
   }
@@ -23,7 +23,6 @@ export class AppComponent implements OnInit{
     this.httpService.getId().then((userId) => {
       this.httpService.getEmployee(userId).then((person) => {
         this.result = person;
-        console.log(this.result);
       });
     });
   }

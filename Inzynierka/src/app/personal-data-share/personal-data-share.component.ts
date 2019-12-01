@@ -17,8 +17,9 @@ export class PersonalDataShareComponent implements OnInit {
   ngOnInit() {
     this.httpService.getId().then((userId) => {
       this.httpService.getEmployee(userId).then((person) => {
+        console.log(person);
         this.result = person;
-        if (this.result.lastName !== 'NULL') {
+        if (this.result.lastName !== null) {
           this.router.navigate(['personal-data']);
         }
       });

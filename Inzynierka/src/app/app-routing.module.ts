@@ -19,6 +19,7 @@ import { AddJobOfferComponent } from './add-job-offer/add-job-offer.component';
 import { CandidateComponent } from './candidate/candidate.component';
 import { CvComponent } from './cv/cv.component';
 import { PersonalDataShareComponent } from './personal-data-share/personal-data-share.component';
+import { GraphicCreatorComponent } from './graphic-creator/graphic-creator.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
   { path: 'company-info', component: CompanyInfoComponent},
   { path: 'job-offers', component: JobOffersComponent},
   { path: 'registration', component: RegistrationComponent},
-  { path: 'graphic', component: GraphicComponent, canActivate: [AuthGuardService]},
+  { path: 'graphic', component: GraphicComponent},
   { path: 'excercise', component: ExcerciseComponent, canActivate: [AuthGuardService]},
   { path: 'raport', component: RaportComponent, canActivate: [AuthGuardService]},
   { path: 'vacation', component: VacationComponent, canActivate: [AuthGuardService]},
@@ -39,7 +40,8 @@ const routes: Routes = [
   { path: 'add-job-offer', component: AddJobOfferComponent, canActivate: [AuthGuardService]},
   { path: 'candidate', component: CandidateComponent},
   { path: 'cv', component: CvComponent, canActivate: [AuthGuardService]},
-  { path: 'personal-data-share', component: PersonalDataShareComponent, canActivate: [AuthGuardService]}
+  { path: 'personal-data-share', component: PersonalDataShareComponent, canActivate: [AuthGuardService]},
+  { path: 'graphic-creator', component: GraphicCreatorComponent}
 ];
 
 @NgModule({
