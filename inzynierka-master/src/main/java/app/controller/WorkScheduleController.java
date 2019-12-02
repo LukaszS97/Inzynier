@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/workSchedule")
+@CrossOrigin
 public class WorkScheduleController {
 
     private WorkScheduleService workScheduleService;
@@ -25,6 +26,8 @@ public class WorkScheduleController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postWorkSchedule(@RequestBody WorkSchedule workSchedule, @PathVariable String employeeName) {
+        System.out.println(workSchedule.toString());
+        System.out.println(employeeName);
         workScheduleService.saveWorkSchedule(workSchedule, employeeName);
     }
 

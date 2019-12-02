@@ -9,6 +9,7 @@ import { CandidateEmployee } from './models/candidate-employee';
 import { UserRole } from './models/user-role';
 import { JobName } from './models/job-name';
 import { Email } from './models/email';
+import { Graphic } from './models/graphic';
 
 
 
@@ -113,6 +114,11 @@ export class HttpService {
           }
         });
     });
+  }
+
+  async addGraphic(grafik: Graphic, email): Promise<string> {
+    console.log(grafik);
+    return await this.httpPostRequestParm('api/workSchedule', email, grafik);
   }
 
   async addUser(user: User, role: UserRole): Promise<string> {

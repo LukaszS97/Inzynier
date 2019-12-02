@@ -12,10 +12,9 @@ import { Graphic } from '../models/graphic';
 })
 export class GraphicCreatorComponent implements OnInit {
 
-  graphicList: any = [];
   usersList: Array<User>;
-  user: User;
   grafik: Graphic = new Graphic();
+  email;
   constructor(private httpService: HttpService, private authSerive: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -24,9 +23,9 @@ export class GraphicCreatorComponent implements OnInit {
     });
   }
 
-  addToList() {
-    this.graphicList.push(this.grafik);
-    console.log(this.graphicList);
+  addGraphic() {
+    console.log(this.grafik);
+    this.httpService.addGraphic(this.grafik, this.email);
   }
 
 }

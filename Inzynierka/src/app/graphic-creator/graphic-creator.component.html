@@ -7,23 +7,24 @@
           <tr>
             <td>Wybierz pracownika:</td>
             <td>
-              <select name="user" [(ngModel)]="user" class="w3-input w3-padding-S16 w3-border">
-                <option *ngFor="let user of usersList"> {{user.email}} </option>
+              <select name="user" [(ngModel)]="email" class="w3-input w3-padding-S16 w3-border">
+                <option> </option>
+                <option *ngFor="let one of usersList"> {{one.email}} </option>
               </select>
             </td>
           </tr>
           <tr>
             <td>Wybierz datę rozpoczęcia pracy:</td>
-            <td><input class="date" type="date" name="data" [(ngModel)]="grafik.fromDate">, godzina <input class="hour" type="text" name="hour"
-                [(ngModel)]="grafik.fromHour"></td>
+            <td><input class="date" type="date" name="data" [(ngModel)]="grafik.localDate">, godzina <input class="hour" type="text" name="hour"
+                [(ngModel)]="grafik.startTime"></td>
           </tr>
           <tr>
             <td>Wybierz datę zakończenia pracy:</td>
-            <td><input class="date" type="date" name="data" [(ngModel)]="grafik.toDate">, godzina <input class="hour" type="text" name="hour"
-                [(ngModel)]="grafik.toHour"></td>
+            <td>godzina <input class="hour" type="text" name="hour"
+                [(ngModel)]="grafik.endTime"></td>
           </tr>
           <tr>
-            <td style="text-align: center;" colspan="2" ><button class="w3-button w3-blue" (click)="addToList()">Zatwierdź</button></td>
+            <td style="text-align: center;" colspan="2" ><button class="w3-button w3-blue" (click)="addGraphic()">Zatwierdź</button></td>
           </tr>
         </tbody>
       </table>

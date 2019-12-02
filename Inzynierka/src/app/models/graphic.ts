@@ -1,7 +1,7 @@
+import { Employee } from './employee';
+
 export class Graphic {
-  who?;
-  fromDate?;
-  toDate?;
-  fromHour?;
-  toHour?;
+  localDate?: Date;
+  startTime?;
+  endTime? ;
 }
