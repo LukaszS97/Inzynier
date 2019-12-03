@@ -2,7 +2,6 @@ package app.controller;
 
 import app.model.WorkSchedule;
 import app.service.WorkScheduleService;
-import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +25,8 @@ public class WorkScheduleController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postWorkSchedule(@RequestBody WorkSchedule workSchedule, @PathVariable String employeeName) {
+        System.out.println(workSchedule.toString());
+        System.out.println(employeeName);
         workScheduleService.saveWorkSchedule(workSchedule, employeeName);
     }
 

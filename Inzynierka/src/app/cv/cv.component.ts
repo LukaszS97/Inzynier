@@ -12,7 +12,8 @@ export class CvComponent implements OnInit {
 
   cvList: Array<CandidateEmployee>;
   submit = true;
-  email: Email;
+  submitted = false;
+  email: Email = new Email();
 
   constructor(private httpService: HttpService) { }
 
@@ -30,5 +31,6 @@ export class CvComponent implements OnInit {
   }
   sendEmail() {
     this.httpService.sendEmail(this.email);
+    this.submitted = true;
   }
 }

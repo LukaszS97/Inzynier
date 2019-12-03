@@ -19,7 +19,7 @@ public class ApplicationForm implements Serializable {
     private String education;
     @ManyToOne
     @JoinColumn(name = "jobOffer_id")
-    @JsonIgnore
+    //@JsonIgnore
     private JobOffer jobOffer;
 
     public Long getId() {

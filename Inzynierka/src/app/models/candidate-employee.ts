@@ -1,3 +1,5 @@
+import { Joboffer } from './joboffer';
+
 export class CandidateEmployee {
   id?;
   education?;
@@ -6,4 +8,5 @@ export class CandidateEmployee {
   firstName?;
   lastName?;
   phonnNumber?;
+  jobOffer?: Joboffer;
 }

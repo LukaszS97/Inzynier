@@ -1,7 +1,7 @@
 <div class="bgimg w3-container" id="graphic">
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Dostępne CV</span></h5>
-    <div *ngFor="let cv of cvList">
+    <div [hidden]="submitted" *ngFor="let cv of cvList">
         <div *ngIf="submit">
       <table style="margin: auto;">
         <tbody>
@@ -31,7 +31,7 @@
           </tr>
           <tr>
             <td>Nazwa posady do której aplikuję:</td>
-            <td>TUTAJ MUSZE MIEC ZWRÓCONA NAZWE JESZCZE</td>
+            <td>{{cv.jobOffer.position}}</td>
           </tr>
           <tr>
               <td colspan="2"><button type="button" (click)="showEmail()" class="w3-button w3-blue">Wyślij Email z odpowiedzią.</button></td>
@@ -64,3 +64,6 @@
     </div>
   </div>
 </div>
+<div class="komunikat" [hidden]="!submitted">
+    <h4>Pomyślnie wysłano maila z odpowiedzią!</h4>
+  </div>
