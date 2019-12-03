@@ -7,6 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -29,6 +30,9 @@ public class User implements Serializable {
     cascade = CascadeType.ALL)
     @JsonIgnore
     private Employee employee;
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Task> tasks;
 
     public Long getId_user() {
         return id_user;
@@ -76,6 +80,14 @@ public class User implements Serializable {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
 

@@ -36,6 +36,7 @@ public class Employee implements Serializable {
     @OneToMany(mappedBy = "employee")
     private List<WorkSchedule> workSchedule;
 
+
     public String getFirstName() {
         return firstName;
     }
@@ -99,6 +100,7 @@ public class Employee implements Serializable {
     public void setWorkSchedule(List<WorkSchedule> workSchedule) {
         this.workSchedule = workSchedule;
     }
+
 
     public Employee() {
     }
