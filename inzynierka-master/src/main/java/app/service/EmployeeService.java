@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -76,4 +77,7 @@ public class EmployeeService {
 
     }
 
+    public List<Employee> getEmployees() {
+        return employeeRepository.findAll();
+    }
 }

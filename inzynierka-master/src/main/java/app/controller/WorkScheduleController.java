@@ -25,8 +25,6 @@ public class WorkScheduleController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postWorkSchedule(@RequestBody WorkSchedule workSchedule, @PathVariable String employeeName) {
-        System.out.println(workSchedule.toString());
-        System.out.println(employeeName);
         workScheduleService.saveWorkSchedule(workSchedule, employeeName);
     }
 
@@ -39,7 +37,7 @@ public class WorkScheduleController {
 
     @RequestMapping(method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<WorkSchedule> getWorkScheduleForEmployee(){
+    public List<WorkSchedule> getWorkScheduleForEmployee() {
         return workScheduleService.showWorkScheduleForEmployee();
     }
 

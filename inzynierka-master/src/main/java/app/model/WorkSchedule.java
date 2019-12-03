@@ -1,6 +1,9 @@
 package app.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,6 +11,9 @@ import java.time.LocalDate;
 
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class WorkSchedule implements Serializable {
 
     @Id
@@ -16,9 +22,9 @@ public class WorkSchedule implements Serializable {
     private int startTime;
     private int endTime;
     private LocalDate localDate;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_Id")
-    @JsonIgnore
+    //@JsonIgnore
     private Employee employee;
 
     public LocalDate getLocalDate() {

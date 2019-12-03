@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/employee")
@@ -48,6 +49,13 @@ public class EmployeeController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteEmployee(@PathVariable Long id) {
         employeeService.removeEmployee(id);
+    }
+
+    @RequestMapping(path = "/employees",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Employee> getEmployees() {
+        return employeeService.getEmployees();
     }
 
 
