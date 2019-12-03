@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -51,12 +52,16 @@ public class EmployeeController {
         employeeService.removeEmployee(id);
     }
 
-    @RequestMapping(path = "/employees",
+
+    //przerob na json workschedule z nulami i data tylko
+   /* @RequestMapping(path = "/employees/{date}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Employee> getEmployees() {
-        return employeeService.getEmployees();
+    public List<Employee> getEmployees(@PathVariable String date) {
+        return employeeService.getEmployees(date);
     }
+
+    */
 
 
 }

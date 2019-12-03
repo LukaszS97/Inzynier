@@ -24,7 +24,7 @@ public class WorkSchedule implements Serializable {
     private LocalDate localDate;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_Id")
-    //@JsonIgnore
+    @JsonIgnore
     private Employee employee;
 
     public LocalDate getLocalDate() {

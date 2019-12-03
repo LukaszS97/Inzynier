@@ -19,7 +19,7 @@ export class GraphicCreatorComponent implements OnInit {
   submitted = false;
   napis = 'Pokaż';
   pozwolenie = false;
-  data;
+  data: Date;
   constructor(private httpService: HttpService, private authSerive: AuthService, private router: Router) { }
 
   ngOnInit() {

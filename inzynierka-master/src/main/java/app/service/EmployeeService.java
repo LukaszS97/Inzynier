@@ -2,6 +2,7 @@ package app.service;
 
 import app.model.Employee;
 import app.model.User;
+import app.model.WorkSchedule;
 import app.repository.EmployeeRepository;
 import app.repository.UserRepository;
 import app.repository.UserRoleRepository;
@@ -11,6 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -77,7 +80,43 @@ public class EmployeeService {
 
     }
 
-    public List<Employee> getEmployees() {
-        return employeeRepository.findAll();
+    //Zwracaj tylko dzisiejsz date
+    //trzeba to zrobic odpiero
+   /*
+    public List<Employee> getEmployees(String date) {
+
+        String[] strings = date.split("-");
+        int year = Integer.valueOf(strings[0]);
+        int day = Integer.valueOf(strings[1]);
+        int month = Integer.valueOf(strings[2]);
+        LocalDate ldate = LocalDate.of(year, month, day);
+        System.out.println("Kupaaaaa  " + ldate);
+
+        List<Employee> list = employeeRepository.findAll();
+        List<Employee> filtList = new ArrayList<>();
+
+        for (int i = 0; list.size() > i; i++) {
+            list.forEach(employee -> {
+                List<WorkSchedule> schedule = employee.getWorkSchedule();
+                System.out.println("1 " + schedule);
+                for (int j = 0;schedule.size() >j; j++){
+
+                }
+                if (schedule.equals(ldate)) {
+                    filtList.add(employee);
+                    System.out.println("2 " + filtList);
+                }
+                System.out.println("3 " + filtList);
+            });
+            System.out.println("4 " + filtList);
+        }
+        System.out.println("5 " + filtList);
+        System.out.println(list);
+        System.out.println(filtList);
+        return filtList;
+
+
     }
+*/
+
 }
