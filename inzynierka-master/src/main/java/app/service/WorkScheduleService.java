@@ -7,6 +7,8 @@ import app.repository.EmployeeRepository;
 import app.repository.UserRepository;
 import app.repository.WorkScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +19,7 @@ public class WorkScheduleService {
 
     private WorkScheduleRepository workScheduleRepository;
     private UserRepository userRepository;
+    private EmployeeRepository employeeRepository;
 
     @Autowired
     public void setWorkScheduleRepository(WorkScheduleRepository workScheduleRepository) {
@@ -28,9 +31,10 @@ public class WorkScheduleService {
         this.userRepository = userRepository;
     }
 
-
-
-
+    @Autowired
+    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
 
     public void saveWorkSchedule(WorkSchedule workSchedule, String employeeName) {
@@ -45,4 +49,18 @@ public class WorkScheduleService {
     public List<WorkSchedule> showAllWorkSchedule() {
         return workScheduleRepository.findAll();
     }
+
+    public List<WorkSchedule> showWorkScheduleForEmployee() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+
+        User user = userRepository.findByEmail(name);
+
+        Employee employee = employeeRepository.findById(user.getId_user())
+                .orElseThrow(() -> new NoSuchElementException("Not found"));
+
+        return employee.getWorkSchedule();
+
+    }
 }
+

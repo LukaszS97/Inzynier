@@ -1,6 +1,5 @@
 package app.controller;
 
-import app.model.Employee;
 import app.model.WorkSchedule;
 import app.service.WorkScheduleService;
 import org.hibernate.jdbc.Work;
@@ -12,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/workSchedule")
+@CrossOrigin
 public class WorkScheduleController {
 
     private WorkScheduleService workScheduleService;
@@ -21,6 +21,7 @@ public class WorkScheduleController {
         this.workScheduleService = workScheduleService;
     }
 
+    //wywal zmienna z urla bo dostaniesz w obiekcie workSchedule employa z samym mailem (dostaje pustego maila z mailem)
     @RequestMapping(path = "/{employeeName}",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -28,10 +29,17 @@ public class WorkScheduleController {
         workScheduleService.saveWorkSchedule(workSchedule, employeeName);
     }
 
-    @RequestMapping(method = RequestMethod.GET,
+    @RequestMapping(path = "/schedules",
+            method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public List<WorkSchedule> getAllWorkSchedule() {
         return workScheduleService.showAllWorkSchedule();
+    }
+
+    @RequestMapping(method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<WorkSchedule> getWorkScheduleForEmployee(){
+        return workScheduleService.showWorkScheduleForEmployee();
     }
 
 }
