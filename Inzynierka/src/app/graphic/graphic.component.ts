@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Graphic } from '../models/graphic';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-graphic',
@@ -8,11 +9,15 @@ import { Graphic } from '../models/graphic';
 })
 export class GraphicComponent implements OnInit {
 
-  tablica: Array<Graphic>;
+  grafik: Array<Graphic>;
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.httpService.getGraphic().then((graphic) => {
+      this.grafik = graphic;
+    });
   }
+
 
 }

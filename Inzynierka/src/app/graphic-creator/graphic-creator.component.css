@@ -2,5 +2,24 @@
   width: 50px;
 }
 .date{
-  width: 150px;
+  width: 161px;
 }
+.komunikat{
+  text-align: center;
+}
+.grafik{
+  float: left;
+  margin: 5px;
+  background: #2196F3;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  width: 220px;
+}
+.odd-div {
+  background: #AFEEEE;
+  color:black;
+}
+
+
+

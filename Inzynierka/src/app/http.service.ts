@@ -35,6 +35,14 @@ export class HttpService {
     });
   }
 
+  async getGraphicList(data): Promise<Array<Graphic>> {
+    return await this.httpGetRequest('api/workSchedule', data);
+  }
+
+  async getGraphic(): Promise<Array<Graphic>> {
+    return await this.httpGetRequest('api/workSchedule');
+  }
+
   async getUsers(): Promise<Array<User>> {
     return await this.httpGetRequest('api/user/users');
   }

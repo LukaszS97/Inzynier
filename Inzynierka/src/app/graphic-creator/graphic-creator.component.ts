@@ -14,7 +14,12 @@ export class GraphicCreatorComponent implements OnInit {
 
   usersList: Array<User>;
   grafik: Graphic = new Graphic();
+  grafikList: Array<Graphic>;
   email;
+  submitted = false;
+  napis = 'Pokaż';
+  pozwolenie = false;
+  data;
   constructor(private httpService: HttpService, private authSerive: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -24,8 +29,22 @@ export class GraphicCreatorComponent implements OnInit {
   }
 
   addGraphic() {
-    console.log(this.grafik);
-    this.httpService.addGraphic(this.grafik, this.email);
+    const result = this.httpService.addGraphic(this.grafik, this.email);
+    if (result) {
+      this.submitted = true;
+      this.pozwolenie = false;
+    }
   }
+  showGraphic() {
+    this.httpService.getGraphicList(this.data).then((result) => {
+      this.grafikList = result;
+    });
+    this.pozwolenie = !this.pozwolenie;
+    if (this.pozwolenie === true) {
+      this.napis = 'Ukryj';
+    } else {
+      this.napis = 'Pokaż';
+    }
 
+  }
 }
