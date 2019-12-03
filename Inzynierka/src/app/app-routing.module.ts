@@ -20,6 +20,7 @@ import { CandidateComponent } from './candidate/candidate.component';
 import { CvComponent } from './cv/cv.component';
 import { PersonalDataShareComponent } from './personal-data-share/personal-data-share.component';
 import { GraphicCreatorComponent } from './graphic-creator/graphic-creator.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
   { path: 'candidate', component: CandidateComponent},
   { path: 'cv', component: CvComponent, canActivate: [AuthGuardService]},
   { path: 'personal-data-share', component: PersonalDataShareComponent, canActivate: [AuthGuardService]},
-  { path: 'graphic-creator', component: GraphicCreatorComponent}
+  { path: 'graphic-creator', component: GraphicCreatorComponent, canActivate: [AuthGuardService]},
+  { path: 'add-task', component: AddTaskComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

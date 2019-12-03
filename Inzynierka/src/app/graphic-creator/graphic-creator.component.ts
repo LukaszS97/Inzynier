@@ -3,7 +3,7 @@ import { User } from '../models/User';
 import { HttpService } from '../http.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { Graphic } from '../models/graphic';
+import { WorkSchedule } from '../models/work-schedule';
 
 @Component({
   selector: 'app-graphic-creator',
@@ -13,13 +13,13 @@ import { Graphic } from '../models/graphic';
 export class GraphicCreatorComponent implements OnInit {
 
   usersList: Array<User>;
-  grafik: Graphic = new Graphic();
-  grafikList: Array<Graphic>;
+  grafik: WorkSchedule = new WorkSchedule();
+  grafikList: Array<WorkSchedule>;
   email;
   submitted = false;
   napis = 'Pokaż';
   pozwolenie = false;
-  data;
+  data: WorkSchedule = new WorkSchedule();
   constructor(private httpService: HttpService, private authSerive: AuthService, private router: Router) { }
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Graphic } from '../models/graphic';
+import { WorkSchedule } from '../models/work-schedule';
 import { HttpService } from '../http.service';
 
 @Component({
@@ -9,13 +9,14 @@ import { HttpService } from '../http.service';
 })
 export class GraphicComponent implements OnInit {
 
-  grafik: Array<Graphic>;
+  grafik: Array<WorkSchedule>;
 
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
     this.httpService.getGraphic().then((graphic) => {
       this.grafik = graphic;
+      console.log(this.grafik);
     });
   }
 
