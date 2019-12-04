@@ -37,9 +37,7 @@ export class HttpService {
         });
     });
   }
-  async getGraphicList(data: WorkSchedule): Promise<Array<WorkSchedule>> {
-    return await this.httpGetRequestPost('api/workSchedule', data);
-  }
+
 
   // get z lub bez parametru *************************************************************************************************8
   public httpGetRequest(actionName: string, params: string = ''): Promise<any> {
@@ -53,6 +51,9 @@ export class HttpService {
           }
         });
     });
+  }
+  async getGraphicList(data): Promise<Array<Employee>> {
+    return await this.httpGetRequest('api/employee/employees', data);
   }
 
   async getGraphic(): Promise<Array<WorkSchedule>> {

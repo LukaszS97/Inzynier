@@ -36,11 +36,14 @@
         <h4>Pomyślnie dodano do grafiku!</h4>
         <meta http-equiv="refresh" content="1">
       </div>
-    <h5 style="text-align: center;">Grafik wszystkich osób pracujących w dniu<input class="date" type="date" [(ngModel)]="data.localDate"><button class="w3-button w3-blue"
+    <h5 style="text-align: center;">Grafik wszystkich osób pracujących w dniu<input class="date" type="date" [(ngModel)]="data"><button class="w3-button w3-blue"
       (click)="showGraphic()">{{napis}}</button></h5>
     <div *ngIf="pozwolenie">
       <div *ngFor="let one of grafikList, let odd = odd" class="grafik" [ngClass]="{'odd-div': odd===true}">
-        Użytkownik:{{one.employee.user.email}}<br>Data:{{one.localDate}}<br> Od godz.:{{one.startTime}} do godz.:{{one.endTime}}
+        Użytkownik:<br>{{one.lastName}} {{one.firstName}}
+        <div *ngFor="let main of one.workSchedule">
+        Data:{{main.localDate}}<br> Od godz.:{{main.startTime}} do godz.:{{main.endTime}}
+      </div>
       </div>
     </div>
   </div>

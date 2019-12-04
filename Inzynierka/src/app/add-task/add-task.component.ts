@@ -20,8 +20,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   addTasks() {
-    this.httpService.addTasks(this.addTask).then((task) =>{
-    });
+    this.httpService.addTasks(this.addTask);
   }
 
 }

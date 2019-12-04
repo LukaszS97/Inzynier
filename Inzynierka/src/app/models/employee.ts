@@ -1,4 +1,5 @@
 import { User } from './User';
+import { WorkSchedule } from './work-schedule';
 
 export class Employee {
   id?;
@@ -8,4 +9,5 @@ export class Employee {
   lastName?;
   phoneNumber?;
   user?: User;
+  workSchedule?: WorkSchedule;
 }

@@ -4,6 +4,7 @@ import { HttpService } from '../http.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { WorkSchedule } from '../models/work-schedule';
+import { Employee } from '../models/employee';
 
 @Component({
   selector: 'app-graphic-creator',
@@ -14,12 +15,12 @@ export class GraphicCreatorComponent implements OnInit {
 
   usersList: Array<User>;
   grafik: WorkSchedule = new WorkSchedule();
-  grafikList: Array<WorkSchedule>;
+  grafikList: Array<Employee>;
   email;
   submitted = false;
   napis = 'Pokaż';
   pozwolenie = false;
-  data: WorkSchedule = new WorkSchedule();
+  data;
   constructor(private httpService: HttpService, private authSerive: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -34,10 +35,12 @@ export class GraphicCreatorComponent implements OnInit {
       this.submitted = true;
       this.pozwolenie = false;
     }
+    console.log(this.grafik.localDate);
   }
   showGraphic() {
     this.httpService.getGraphicList(this.data).then((result) => {
       this.grafikList = result;
+      console.log(this.grafikList);
     });
     this.pozwolenie = !this.pozwolenie;
     if (this.pozwolenie === true) {
