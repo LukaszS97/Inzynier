@@ -114,6 +114,7 @@ public class Employee implements Serializable {
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", bankAccountNumber='" + bankAccountNumber + '\'' +
+                ", workSchedule=" + workSchedule.toString() +
                 '}';
     }
 }

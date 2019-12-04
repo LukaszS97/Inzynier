@@ -80,18 +80,66 @@ public class EmployeeService {
 
     }
 
-    //Zwracaj tylko dzisiejsz date
-    //trzeba to zrobic odpiero
-   /*
+
+    //Janusz edition
     public List<Employee> getEmployees(String date) {
 
         String[] strings = date.split("-");
         int year = Integer.valueOf(strings[0]);
         int day = Integer.valueOf(strings[1]);
         int month = Integer.valueOf(strings[2]);
-        LocalDate ldate = LocalDate.of(year, month, day);
+        //UWAGA!!!!!!
+        //W LocalDate.of() zamieniona kolejnosc miesiaca z dniem(w bazie sie inny format zapisywal)
+        LocalDate ldate = LocalDate.of(year, day, month);
         System.out.println("Kupaaaaa  " + ldate);
 
+        List<Employee> list = employeeRepository.findAll();
+        List<Employee> returnList = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.get(i).getWorkSchedule().size(); j++) {
+                if (list.get(i).getWorkSchedule().get(j).getLocalDate().equals(ldate)) {
+                    Employee empl = list.get(i);
+                    List<WorkSchedule> scheduleList = new ArrayList<>();
+                    scheduleList.add(list.get(i).getWorkSchedule().get(j));
+                    empl.setWorkSchedule(scheduleList);
+                    returnList.add(empl);
+                    System.out.println("11111 " + returnList);
+                    break;
+                }
+            }
+        }
+        System.out.println("222222 " + returnList);
+        return returnList;
+
+
+
+
+        /*
+        List<Employee> list = employeeRepository.findAll();
+        List<Employee> newList = new ArrayList<>();
+
+        System.out.println("1111111111 " + list);
+        System.out.println("1111111111newList " + newList);
+
+        list.stream()
+                .map(employee -> employee.getWorkSchedule().stream()
+                        .filter(schedule -> (schedule.getLocalDate()).equals(LocalDate.of(year, month, day)))
+                        .forEach(cos -> newList.add(cos)))
+                .forEach(cos -> newList.add(cos));
+
+
+        System.out.println("2222222222 " + list);
+        System.out.println("2222222222newList " + newList);
+
+        return list;
+
+         */
+
+
+
+
+/*
         List<Employee> list = employeeRepository.findAll();
         List<Employee> filtList = new ArrayList<>();
 
@@ -116,7 +164,9 @@ public class EmployeeService {
         return filtList;
 
 
+
+ */
     }
-*/
+
 
 }

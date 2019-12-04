@@ -53,15 +53,15 @@ public class EmployeeController {
     }
 
 
-    //przerob na json workschedule z nulami i data tylko
-   /* @RequestMapping(path = "/employees/{date}",
+    //Janusz edition
+    @RequestMapping(path = "/employees/{date}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Employee> getEmployees(@PathVariable String date) {
         return employeeService.getEmployees(date);
     }
 
-    */
+
 
 
 }
