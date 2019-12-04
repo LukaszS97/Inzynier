@@ -33,6 +33,7 @@ import { MenuAfterLoginEmployeeComponent } from './menu-after-login-employee/men
 import { CvComponent } from './cv/cv.component';
 import { PersonalDataShareComponent } from './personal-data-share/personal-data-share.component';
 import { GraphicCreatorComponent } from './graphic-creator/graphic-creator.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { GraphicCreatorComponent } from './graphic-creator/graphic-creator.compo
     MenuAfterLoginEmployeeComponent,
     CvComponent,
     PersonalDataShareComponent,
-    GraphicCreatorComponent
+    GraphicCreatorComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,

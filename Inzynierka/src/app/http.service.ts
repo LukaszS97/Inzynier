@@ -9,7 +9,8 @@ import { CandidateEmployee } from './models/candidate-employee';
 import { UserRole } from './models/user-role';
 import { JobName } from './models/job-name';
 import { Email } from './models/email';
-import { Graphic } from './models/graphic';
+import { WorkSchedule } from './models/work-schedule';
+import { Task } from './models/task';
 
 
 
@@ -20,6 +21,25 @@ import { Graphic } from './models/graphic';
 export class HttpService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
+
+
+
+  // get bez parametru z wyslanymi danymi nie w url*************************************************************************************************8
+  public httpGetRequestPost(actionName: string, requestData: any = {}): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.get<any>(`http://localhost:8080/${actionName}`, {observe: 'response'})
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+  async getGraphicList(data: WorkSchedule): Promise<Array<WorkSchedule>> {
+    return await this.httpGetRequestPost('api/workSchedule', data);
+  }
 
   // get z lub bez parametru *************************************************************************************************8
   public httpGetRequest(actionName: string, params: string = ''): Promise<any> {
@@ -35,11 +55,7 @@ export class HttpService {
     });
   }
 
-  async getGraphicList(data): Promise<Array<Graphic>> {
-    return await this.httpGetRequest('api/workSchedule', data);
-  }
-
-  async getGraphic(): Promise<Array<Graphic>> {
+  async getGraphic(): Promise<Array<WorkSchedule>> {
     return await this.httpGetRequest('api/workSchedule');
   }
 
@@ -80,6 +96,10 @@ export class HttpService {
         });
     });
   }
+  async addTasks(task: Task): Promise<any> {
+    return await this.httpPostRequest('TUTAJ JEBNAC URL', task);
+  }
+
   async sendEmail(email: Email): Promise<any> {
     return await this.httpPostRequest('sendMail', email);
   }
@@ -124,7 +144,7 @@ export class HttpService {
     });
   }
 
-  async addGraphic(grafik: Graphic, email): Promise<string> {
+  async addGraphic(grafik: WorkSchedule, email): Promise<string> {
     console.log(grafik);
     return await this.httpPostRequestParm('api/workSchedule', email, grafik);
   }

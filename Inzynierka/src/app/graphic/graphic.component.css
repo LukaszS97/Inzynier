@@ -1,14 +1,15 @@
 .grafik{
   float: left;
   margin: 5px;
-  background: #E0FFFF;
+  background: #2196F3;
+  color: white;
   text-align: center;
   padding: 5px;
-  width: 220px
+  width: 220px;
 }
-
 .odd-div {
   background: #AFEEEE;
+  color:black;
 }
 
 
