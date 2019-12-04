@@ -35,7 +35,6 @@ export class GraphicCreatorComponent implements OnInit {
       this.submitted = true;
       this.pozwolenie = false;
     }
-    console.log(this.grafik.localDate);
   }
   showGraphic() {
     this.httpService.getGraphicList(this.data).then((result) => {

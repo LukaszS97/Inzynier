@@ -1,11 +1,11 @@
 import { User } from './User';
 
 export class Task {
-  idTask?;
+  id?;
   startTask?;
   endTask?;
-  taskName?;
-  taskDescription?;
-  isDone?;
-  user?: User;
+  nameTask?;
+  descriptionTask?;
+  isDone?: boolean;
+  user?: User = new User();
 }

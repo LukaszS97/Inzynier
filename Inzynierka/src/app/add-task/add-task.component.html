@@ -6,14 +6,14 @@
         <tbody>
           <tr>
             <td>Wybierz pracownika:</td>
-            <td><select name="user" [(ngModel)]="addTask.user" class="w3-input w3-padding-S16 w3-border">
+            <td><select name="user" [(ngModel)]="addTask.user.email" class="w3-input w3-padding-S16 w3-border">
                 <option> </option>
                 <option *ngFor="let one of usersList"> {{one.email}} </option>
               </select></td>
           </tr>
           <tr>
             <td>Nazwa:</td>
-            <td><input [(ngModel)]="addTask.taskName" type="text" id="taskName" name="taskName"
+            <td><input [(ngModel)]="addTask.nameTask" type="text" id="taskName" name="taskName"
                 class="w3-input w3-padding-16 w3-border"></td>
           </tr>
           <tr>
@@ -26,7 +26,7 @@
           </tr>
           <tr>
             <td>Opis zadania:</td>
-            <td><input [(ngModel)]="addTask.taskDescription" type="text" id="taskDescription" name="taskDescription"
+            <td><input [(ngModel)]="addTask.descriptionTask" type="text" id="taskDescription" name="taskDescription"
                 class="w3-input w3-padding-16 w3-border"></td>
           </tr>
           <tr>

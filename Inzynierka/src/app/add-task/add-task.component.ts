@@ -20,6 +20,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   addTasks() {
+    console.log(this.addTask);
     this.httpService.addTasks(this.addTask);
   }
 
