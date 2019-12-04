@@ -1,9 +1,6 @@
 package app.service;
 
-import app.model.Employee;
-import app.model.StringResponse;
-import app.model.User;
-import app.model.UserRole;
+import app.model.*;
 import app.repository.EmployeeRepository;
 import app.repository.UserRepository;
 import app.repository.UserRoleRepository;
@@ -98,6 +95,15 @@ public class UserService {
 
     public List<User> getUsers() {
         return userRepository.findAll();
+    }
+
+    public List<Task> getUserTask() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+
+        User user = userRepository.findByEmail(name);
+
+        return user.getTasks();
     }
 }
 

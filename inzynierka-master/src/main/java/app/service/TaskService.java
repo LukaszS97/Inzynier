@@ -10,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TaskService {
 
@@ -33,13 +35,7 @@ public class TaskService {
         taskRepository.save(task);
     }
 
-    /*
-    public Task getUserTask() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
-
-
+    public List<Task> getTasks() {
+        return taskRepository.findAll();
     }
-
-     */
 }

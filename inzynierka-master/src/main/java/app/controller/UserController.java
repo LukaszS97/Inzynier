@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import app.model.Employee;
 import app.model.StringResponse;
+import app.model.Task;
 import app.model.User;
 import app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,14 @@ public class UserController {
     public StringResponse getUserRole() {
         return userService.getUserRole();
     }
+
+    @RequestMapping(path = "/task",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Task> getTask(){
+        return      userService.getUserTask();
+    }
+
 
 }
 
