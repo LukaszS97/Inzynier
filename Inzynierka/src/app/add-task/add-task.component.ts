@@ -11,6 +11,10 @@ import { User } from '../models/User';
 export class AddTaskComponent implements OnInit {
   addTask: Task = new Task();
   usersList: Array<User>;
+  tasks: Array<Task>;
+  submitted = false;
+  napis = 'Pokaż';
+  pozwolenie = false;
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
@@ -20,8 +24,20 @@ export class AddTaskComponent implements OnInit {
   }
 
   addTasks() {
-    console.log(this.addTask);
     this.httpService.addTasks(this.addTask);
+    this.submitted = true;
+    this.pozwolenie = false;
   }
 
+  showTasks() {
+    this.httpService.getTasks().then((task) => {
+      this.tasks = task;
+    });
+    this.pozwolenie = !this.pozwolenie;
+    if (this.pozwolenie === true) {
+      this.napis = 'Ukryj';
+    } else {
+      this.napis = 'Pokaż';
+    }
+  }
 }

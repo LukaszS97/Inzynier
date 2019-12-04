@@ -35,6 +35,15 @@ export class HttpService {
         });
     });
   }
+
+  async getTask(): Promise<Array<Task>> {
+    return await this.httpGetRequest('api/user/task');
+  }
+
+  async getTasks(): Promise<Array<Task>> {
+    return await this.httpGetRequest('api/task');
+  }
+
   async getGraphicList(data): Promise<Array<Employee>> {
     return await this.httpGetRequest('api/employee/employees', data);
   }

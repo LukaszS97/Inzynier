@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
+import { Task } from '../models/task';
 
 @Component({
   selector: 'app-excercise',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExcerciseComponent implements OnInit {
 
-  constructor() { }
+  task: Array<Task>;
+
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.httpService.getTask().then((result) => {
+      this.task = result;
+    });
   }
-
 }
