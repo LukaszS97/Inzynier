@@ -15,10 +15,9 @@ public class Task implements Serializable {
     private String nameTask;
     private String descriptionTask;
     private boolean isDone;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
-
 
 
     public LocalDate getStartTask() {

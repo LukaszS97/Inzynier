@@ -21,7 +21,7 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void saveTask(@RequestBody Task task) {
+    public void postTask(@RequestBody Task task) {
         taskService.saveTask(task);
     }
 
