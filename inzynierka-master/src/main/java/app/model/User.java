@@ -27,7 +27,7 @@ public class User implements Serializable {
     @JsonIgnore
     private UserRole userRole;
     @OneToOne(mappedBy = "user",
-    cascade = CascadeType.ALL)
+            cascade = CascadeType.ALL)
     @JsonIgnore
     private Employee employee;
     @OneToMany(mappedBy = "user")
@@ -89,7 +89,6 @@ public class User implements Serializable {
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
-
 
 
     public User() {
