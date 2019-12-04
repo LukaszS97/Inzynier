@@ -22,23 +22,6 @@ export class HttpService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-
-
-  // get bez parametru z wyslanymi danymi nie w url*************************************************************************************************8
-  public httpGetRequestPost(actionName: string, requestData: any = {}): Promise<any> {
-    return new Promise((resolve) => {
-      this.http.get<any>(`http://localhost:8080/${actionName}`, {observe: 'response'})
-        .subscribe((response: HttpResponse<any>) => {
-          if (response.status >= 200 && response.status < 300) {
-            resolve(response.body);
-          } else {
-            resolve(false);
-          }
-        });
-    });
-  }
-
-
   // get z lub bez parametru *************************************************************************************************8
   public httpGetRequest(actionName: string, params: string = ''): Promise<any> {
     return new Promise((resolve) => {
@@ -98,7 +81,7 @@ export class HttpService {
     });
   }
   async addTasks(task: Task): Promise<any> {
-    return await this.httpPostRequest('TUTAJ JEBNAC URL', task);
+    return await this.httpPostRequest('api/task', task);
   }
 
   async sendEmail(email: Email): Promise<any> {
