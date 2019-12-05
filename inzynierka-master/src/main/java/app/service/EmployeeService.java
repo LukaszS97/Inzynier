@@ -91,7 +91,6 @@ public class EmployeeService {
         //UWAGA!!!!!!
         //W LocalDate.of() zamieniona kolejnosc miesiaca z dniem(w bazie sie inny format zapisywal)
         LocalDate ldate = LocalDate.of(year, day, month);
-        System.out.println("Kupaaaaa  " + ldate);
 
         List<Employee> list = employeeRepository.findAll();
         List<Employee> returnList = new ArrayList<>();
@@ -104,12 +103,10 @@ public class EmployeeService {
                     scheduleList.add(list.get(i).getWorkSchedule().get(j));
                     empl.setWorkSchedule(scheduleList);
                     returnList.add(empl);
-                    System.out.println("11111 " + returnList);
                     break;
                 }
             }
         }
-        System.out.println("222222 " + returnList);
         return returnList;
 
 
