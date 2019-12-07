@@ -13,7 +13,7 @@ import { LoginResult } from '../models/login-result';
 })
 export class LoginComponent implements OnInit {
   user: User = new User();
-
+  comment = '';
   constructor(private httpService: HttpService, private authSerive: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
       this.authSerive.setApiToken(result);
       this.router.navigate(['personal-data-share']);
     }
+    this.comment = 'Błędny login lub hasło';
   }
 }
 

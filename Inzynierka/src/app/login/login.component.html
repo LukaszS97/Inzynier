@@ -12,6 +12,9 @@
             <td><input [(ngModel)]="user.password" class="w3-input w3-padding-16 w3-border" ></td>
             <td><button (click)="login()" class="w3-button w3-blue">Zaloguj się</button></td>
           </tr>
+          <tr>
+            <td style="color: red;" colspan="2">{{comment}}</td>
+          </tr>
         </tbody>
       </table>
   </div>

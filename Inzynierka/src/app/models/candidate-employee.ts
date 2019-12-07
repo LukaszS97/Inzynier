@@ -7,6 +7,6 @@ export class CandidateEmployee {
   experience?;
   firstName?;
   lastName?;
-  phonnNumber?;
+  phoneNumber?;
   jobOffer?: Joboffer;
 }

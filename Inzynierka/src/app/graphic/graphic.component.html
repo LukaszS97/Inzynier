@@ -1,9 +1,14 @@
 <div class="bgimg w3-container" id="graphic">
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Grafik</span></h5>
+    <div *ngIf="grafik?.length>0">
     <div *ngFor="let one of grafik, let odd = odd" class="grafik" [ngClass]="{'odd-div': odd===true}">
        Dnia: {{one.localDate}}<br>
        od godz.: {{one.startTime}}<br>do godz.: {{one.endTime}}
     </div>
+  </div>
+  <div *ngIf="grafik?.length<1" style="text-align: center;">
+    <h3>Brak grafiku do wyświetlenia</h3>
+  </div>
   </div>
 </div>
