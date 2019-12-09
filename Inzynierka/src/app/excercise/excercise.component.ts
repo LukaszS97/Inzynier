@@ -12,6 +12,7 @@ export class ExcerciseComponent implements OnInit {
 
   task: Array<Task>;
   raport: Raport = new Raport();
+  submitted = false;
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
@@ -22,5 +23,9 @@ export class ExcerciseComponent implements OnInit {
 
   addRaport() {
     this.httpService.addRaport(this.raport);
+    this.submitted = true;
+  }
+  showAddRaport() {
+    this.submitted = false;
   }
 }
