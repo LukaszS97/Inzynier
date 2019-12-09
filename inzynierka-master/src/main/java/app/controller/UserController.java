@@ -1,5 +1,6 @@
 package app.controller;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import app.model.Employee;
@@ -59,8 +60,21 @@ public class UserController {
     @RequestMapping(path = "/task",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Task> getTask(){
-        return      userService.getUserTask();
+    public List<Task> getTask() {
+        return userService.getUserTask();
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteUser() {
+        userService.removeUser();
+    }
+
+    @RequestMapping(path = "/reason",
+            method = RequestMethod.DELETE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteIndicatedUser(@RequestBody User user, @PathVariable String resaon) throws MessagingException {
+        userService.removeIndicatedUser(user,resaon);
     }
 
 

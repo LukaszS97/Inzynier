@@ -15,6 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
+
 
 @Service
 public class UserService {
@@ -24,6 +26,8 @@ public class UserService {
     private UserRoleRepository userRoleRepository;
     private PasswordEncoder passwordEncoder;
     private EmployeeService employeeService;
+    private EmployeeRepository employeeRepository;
+    private MailService mailService;
 
 
     @Autowired
@@ -45,6 +49,19 @@ public class UserService {
     public void setEmployeeService(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
+    @Autowired
+    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
+
+    @Autowired
+    public void setMailService(MailService mailService) {
+        this.mailService = mailService;
+    }
+
+
+
 
     /*
     public void addWithDefaultRole(User user) {
@@ -104,6 +121,33 @@ public class UserService {
         User user = userRepository.findByEmail(name);
 
         return user.getTasks();
+    }
+
+    public void removeUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+
+        User user = userRepository.findByEmail(name);
+        Employee employee = employeeRepository.findById(user.getId_user()).orElseThrow(
+                () -> new NoSuchElementException("Not found"));
+        employeeRepository.delete(employee);
+        userRepository.delete(user);
+
+    }
+
+    public void removeIndicatedUser(User user, String reson) throws MessagingException {
+        User usr = userRepository.findByEmail(user.getEmail());
+        Employee employee = employeeRepository.findById(usr.getId_user()).orElseThrow(
+                () -> new NoSuchElementException("Not found"));
+
+        Mail mail = new Mail();
+        mail.setTo(user.getEmail());
+        mail.setSubject("Wypad z pracy gamoniu");
+        mail.setText(reson);
+        mailService.sendMail(mail, true);
+
+        employeeRepository.delete(employee);
+        userRepository.delete(usr);
     }
 }
 
