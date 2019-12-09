@@ -22,6 +22,7 @@ import { PersonalDataShareComponent } from './personal-data-share/personal-data-
 import { GraphicCreatorComponent } from './graphic-creator/graphic-creator.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { ShowRaportsComponent } from './show-raports/show-raports.component';
+import { FireSomeoneComponent } from './fire-someone/fire-someone.component';
 
 
 const routes: Routes = [
@@ -45,7 +46,8 @@ const routes: Routes = [
   { path: 'personal-data-share', component: PersonalDataShareComponent, canActivate: [AuthGuardService]},
   { path: 'graphic-creator', component: GraphicCreatorComponent, canActivate: [AuthGuardService]},
   { path: 'add-task', component: AddTaskComponent, canActivate: [AuthGuardService]},
-  { path: 'show-raports', component: ShowRaportsComponent}
+  { path: 'show-raports', component: ShowRaportsComponent, canActivate: [AuthGuardService]},
+  { path: 'fire-someone', component: FireSomeoneComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({
