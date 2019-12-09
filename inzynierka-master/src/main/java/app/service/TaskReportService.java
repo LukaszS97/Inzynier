@@ -34,8 +34,7 @@ public class TaskReportService {
 
 
     public void saveTaskReport(TaskReport taskReport) {
-        Task task = taskRepository.findById(taskReport.getTask().getId())
-                .orElseThrow(() -> new NoSuchElementException("Not found"));
+        Task task = taskRepository.findByNameTask(taskReport.getTask().getNameTask());
         taskReport.setTask(task);
         taskReport.setFinishDate(new Date());
         taskReportRepository.save(taskReport);

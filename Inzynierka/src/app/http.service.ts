@@ -11,6 +11,7 @@ import { JobName } from './models/job-name';
 import { Email } from './models/email';
 import { WorkSchedule } from './models/work-schedule';
 import { Task } from './models/task';
+import { Raport } from './models/raport';
 
 
 
@@ -34,6 +35,13 @@ export class HttpService {
           }
         });
     });
+  }
+  async getRaportsOneEmployee(): Promise<Array<Raport>> {
+    return await this.httpGetRequest('api/taskReport/task');
+  }
+
+  async getAllRaport(): Promise<Array<Raport>> {
+    return await this.httpGetRequest('api/taskReport');
   }
 
   async getTask(): Promise<Array<Task>> {
@@ -89,6 +97,10 @@ export class HttpService {
         });
     });
   }
+  async addRaport(raport: Raport): Promise<any> {
+    return await this.httpPostRequest('api/taskReport', raport);
+  }
+
   async addTasks(task: Task): Promise<any> {
     return await this.httpPostRequest('api/task', task);
   }

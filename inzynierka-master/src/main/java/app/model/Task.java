@@ -1,6 +1,9 @@
 package app.model;
 
 import javax.persistence.*;
+
+import org.hibernate.validator.constraints.UniqueElements;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -12,6 +15,7 @@ public class Task implements Serializable {
     private Long id;
     private LocalDate startTask;
     private LocalDate endTask;
+    @Column(unique = true)
     private String nameTask;
     private String descriptionTask;
     private boolean isDone;

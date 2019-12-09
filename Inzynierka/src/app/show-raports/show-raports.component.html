@@ -1,7 +1,7 @@
 <div class="w3-container" id="raport">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Raporty</span></h5>
-    <div *ngIf="raportList?.length>0">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Raporty wszystkich pracowników</span></h5>
+      <div *ngIf="raportList?.length>0">
       <table border style="margin: auto;">
         <tbody>
           <tr class="trMain">
@@ -20,7 +20,7 @@
       </table>
     </div>
     <div *ngIf="raportList?.length<1" style="text-align: center;">
-      <h3>Brak raportów do wyświetlenia</h3>
+        <h3>Brak raportów do wyświetlenia</h3>
+      </div>
     </div>
   </div>
-</div>

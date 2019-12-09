@@ -34,6 +34,7 @@ import { CvComponent } from './cv/cv.component';
 import { PersonalDataShareComponent } from './personal-data-share/personal-data-share.component';
 import { GraphicCreatorComponent } from './graphic-creator/graphic-creator.component';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { ShowRaportsComponent } from './show-raports/show-raports.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { AddTaskComponent } from './add-task/add-task.component';
     CvComponent,
     PersonalDataShareComponent,
     GraphicCreatorComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    ShowRaportsComponent
   ],
   imports: [
     BrowserModule,

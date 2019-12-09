@@ -19,10 +19,31 @@
           <td>W trakcie realizacji</td>
         </tr>
       </tbody>
-    </table>
+    </table><br><br>
+        <h3 style="text-align: center;">Wyślij raport:</h3>
+        <table style="margin: auto;">
+          <tbody>
+            <tr>
+              <td>Wybierz nazwę zadania:</td>
+              <td><select name="taskName" [(ngModel)]="raport.task.nameTask" class="w3-input w3-padding-S16 w3-border">
+                  <option> </option>
+                  <option *ngFor="let one of task"> {{one.nameTask}} </option>
+                </select></td>
+            </tr>
+            <tr>
+              <td>Dodaj komentarz:</td>
+              <td><input class="comment" type="text" name="comment" [(ngModel)]="raport.comment"></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;" colspan="2"><button class="w3-button w3-blue"
+                  (click)="addRaport()">Zatwierdź</button></td>
+            </tr>
+          </tbody>
+        </table>
     </div>
     <div *ngIf="task?.length===0" class="noTask">
       <h3>Brak zadań do wyświetlenia.</h3>
     </div>
   </div>
 </div>
+

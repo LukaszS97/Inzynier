@@ -12,5 +12,11 @@
   "/api/employee": {
     "target": "http://localhost:8080",
     "secure": false
+  },
+
+  "/api/taskReport": {
+    "target": "http://localhost:8080",
+    "secure": false
   }
+
 }
