@@ -8,6 +8,7 @@ import app.repository.UserRoleRepository;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -120,7 +121,13 @@ public class UserService {
 
         User user = userRepository.findByEmail(name);
 
-        return user.getTasks();
+        List<Task> list = user.getTasks();
+
+        list = list.stream()
+                .filter(x -> x.isDone() == false)
+                .collect(Collectors.toList());
+
+        return list;
     }
 
     public void removeUser() {
