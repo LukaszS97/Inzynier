@@ -42,6 +42,7 @@ public class TaskReportService {
 
     public void saveTaskReport(TaskReport taskReport) {
         Task task = taskRepository.findByNameTask(taskReport.getTask().getNameTask());
+        task.setDone(true);
         taskReport.setTask(task);
         taskReport.setFinishDate(new Date());
         taskReportRepository.save(taskReport);

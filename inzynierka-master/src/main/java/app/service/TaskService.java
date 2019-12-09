@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
@@ -36,6 +37,12 @@ public class TaskService {
     }
 
     public List<Task> getTasks() {
-        return taskRepository.findAll();
+        List<Task> list = taskRepository.findAll();
+
+        list = list.stream()
+                .filter(x -> x.isDone() == false)
+                .collect(Collectors.toList());
+
+        return list;
     }
 }
