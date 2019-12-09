@@ -35,14 +35,16 @@ public class TaskReportController {
     public List<TaskReport> getTaskReports(){
         return taskReportService.findTaskReports();
     }
-/*
+
     @RequestMapping(path = "/task",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<TaskReport> getTaskReports(){
-        return taskReportService.findTaskReports();
+    public List<TaskReport> getUserTaskReports(){
+        return taskReportService.findUserTaskReports();
     }
 
- */
+
+
+
 
 }
