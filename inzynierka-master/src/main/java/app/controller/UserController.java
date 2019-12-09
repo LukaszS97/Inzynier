@@ -70,11 +70,11 @@ public class UserController {
         userService.removeUser();
     }
 
-    @RequestMapping(path = "/reason",
+    @RequestMapping(path = "/{reason}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public void deleteIndicatedUser(@RequestBody User user, @PathVariable String resaon) throws MessagingException {
-        userService.removeIndicatedUser(user,resaon);
+    public void deleteIndicatedUser(@RequestBody User user, @PathVariable String reason) throws MessagingException {
+        userService.removeIndicatedUser(user,reason);
     }
 
 
