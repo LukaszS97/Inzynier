@@ -177,7 +177,7 @@ export class HttpService {
     });
   }
 
-  async deleteEmployee(idUser): Promise<any> {
-    return await this.httpDeleteRequest('api/employee', idUser);
+  async deleteEmployee(): Promise<any> {
+    return await this.httpDeleteRequest('api/user');
   }
 }
