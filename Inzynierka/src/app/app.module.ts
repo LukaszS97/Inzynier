@@ -35,6 +35,7 @@ import { PersonalDataShareComponent } from './personal-data-share/personal-data-
 import { GraphicCreatorComponent } from './graphic-creator/graphic-creator.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { ShowRaportsComponent } from './show-raports/show-raports.component';
+import { FireSomeoneComponent } from './fire-someone/fire-someone.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ShowRaportsComponent } from './show-raports/show-raports.component';
     PersonalDataShareComponent,
     GraphicCreatorComponent,
     AddTaskComponent,
-    ShowRaportsComponent
+    ShowRaportsComponent,
+    FireSomeoneComponent
   ],
   imports: [
     BrowserModule,

@@ -17,12 +17,10 @@ export class LeaveComponent implements OnInit {
   }
 
   leave() {
-    this.httpService.getId().then((userId) => {
-      const result = this.httpService.deleteEmployee(userId);
+      const result = this.httpService.deleteEmployee();
       if (result) {
         this.authSerive.signOut();
         this.router.navigate(['main']);
       }
-    });
   }
 }

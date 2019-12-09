@@ -1,0 +1,25 @@
+<div class="w3-container" id="leave">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Wniosek o zwolnienie</span></h5>
+    <div style="width: auto; text-align: center;">
+      <form>
+        <table style="margin: auto;">
+          <tr>
+            <td colspan="2">Wybierz pracownika <select name="user" [(ngModel)]="user.email" class="w3-input w3-padding-S16 w3-border">
+                <option> </option>
+                <option *ngFor="let one of usersList"> {{one.email}} </option>
+              </select></td>
+          </tr>
+          <tr><td colspan="2">Podaj powód zwolnienia pracownika z pracy:</td></tr>
+          <tr>
+            <td colspan="2"><textarea name="powod" [(ngModel)]="reason"  cols="60" rows="5"></textarea></td>
+          </tr>
+          <tr>
+            <td><button (click)="leaveSomeone()" class="w3-button w3-blue">Zatwierdź</button></td>
+            <td><button type="reset" class="w3-button w3-red">Anuluj</button></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>

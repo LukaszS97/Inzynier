@@ -180,4 +180,21 @@ export class HttpService {
   async deleteEmployee(): Promise<any> {
     return await this.httpDeleteRequest('api/user');
   }
+
+  public httpDeleteRequestWithData(actionName: string, params: string = '', requestData: any = {}): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.delete<any>(`http://localhost:8080/${actionName}/${params}`, {observe: 'response'})
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+
+  async deleteSomeone(reason: string, user: User): Promise<any> {
+    return await this.httpDeleteRequestWithData('api/user', reason, user);
+  }
 }
