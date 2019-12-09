@@ -2,6 +2,7 @@ package app.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 public class TaskReport implements Serializable {
@@ -10,6 +11,7 @@ public class TaskReport implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String comment;
+    private Date finishDate;
     @OneToOne
     private Task task;
 
@@ -32,6 +34,14 @@ public class TaskReport implements Serializable {
 
     public Long getId() {
         return id;
+    }
+
+    public Date getFinishDate() {
+        return finishDate;
+    }
+
+    public void setFinishDate(Date finishDate) {
+        this.finishDate = finishDate;
     }
 
     public TaskReport() {
