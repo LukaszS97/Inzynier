@@ -36,6 +36,7 @@ import { GraphicCreatorComponent } from './graphic-creator/graphic-creator.compo
 import { AddTaskComponent } from './add-task/add-task.component';
 import { ShowRaportsComponent } from './show-raports/show-raports.component';
 import { FireSomeoneComponent } from './fire-someone/fire-someone.component';
+import { ShowVacationComponent } from './show-vacation/show-vacation.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { FireSomeoneComponent } from './fire-someone/fire-someone.component';
     GraphicCreatorComponent,
     AddTaskComponent,
     ShowRaportsComponent,
-    FireSomeoneComponent
+    FireSomeoneComponent,
+    ShowVacationComponent
   ],
   imports: [
     BrowserModule,
