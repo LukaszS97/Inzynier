@@ -1,5 +1,7 @@
 package app.model;
 
+
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -14,6 +16,7 @@ public class VacationForm implements Serializable {
     private LocalDate endDate;
     private boolean isAccepted;
     private boolean isDone;
+    private LocalDate timeSendingForm;
     @OneToOne
     @JoinColumn(name = "id_employee")
     private Employee employee;
@@ -61,6 +64,14 @@ public class VacationForm implements Serializable {
 
     public void setDone(boolean done) {
         isDone = done;
+    }
+
+    public LocalDate getTimeSendingForm() {
+        return timeSendingForm;
+    }
+
+    public void setTimeSendingForm(LocalDate timeSendingForm) {
+        this.timeSendingForm = timeSendingForm;
     }
 
     public VacationForm() {

@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -61,8 +62,12 @@ public class VacationFormService {
                 () -> new NoSuchElementException("Not found"));
 
         vacationForm.setEmployee(employee);
+        vacationForm.setTimeSendingForm(LocalDate.now());
         vacationFormRepository.save(vacationForm);
     }
+
+
+
 
     public List<VacationForm> getVacationForms() {
         List<VacationForm> list = vacationFormRepository.findAll();
@@ -72,6 +77,10 @@ public class VacationFormService {
                 .collect(Collectors.toList());
         return list;
     }
+
+
+
+
 
     public void refreshVacationForms(VacationForm vacationForm) {
         long idEmployee = vacationForm.getEmployee().getId();
@@ -93,7 +102,7 @@ public class VacationFormService {
             employeeRepository.save(employee);
             vacationForm.setDone(true);
             vacationFormRepository.save(vacationForm);
-        }else{
+        } else {
             vacationForm.setDone(true);
         }
     }
