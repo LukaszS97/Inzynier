@@ -1,23 +1,30 @@
 <div class="w3-container" id="vacation">
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Wnioski urlopowe</span></h5>
-    <form>
-    <table style="margin: auto;">
-      <tbody>
-        <tr>
-          <td>Data rozpoczęcia:</td>
-          <td><input class="width" type="date" name="data" [(ngModel)]="vacation.startDate"></td>
-        </tr>
-        <tr>
-          <td>Data zakończenia:</td>
-          <td><input class="width" type="date" name="data" [(ngModel)]="vacation.endDate"></td>
-        </tr>
-        <tr>
-          <td style="text-align: center;" colspan="2"><button (click)="sendVacationForm()" class="w3-button w3-blue">Zatwierdź</button>
-            <button class="w3-button w3-red" type="reset">Wyczyść</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
+    <div *ngIf="visible">
+      <form>
+        <table style="margin: auto;">
+          <tbody>
+            <tr>
+              <td>Data rozpoczęcia:</td>
+              <td><input class="width" type="date" name="data" [(ngModel)]="vacation.startDate"></td>
+            </tr>
+            <tr>
+              <td>Data zakończenia:</td>
+              <td><input class="width" type="date" name="data" [(ngModel)]="vacation.endDate"></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;" colspan="2"><button type="reset" (click)="sendVacationForm()"
+                  class="w3-button w3-blue">Zatwierdź</button>
+                <button class="w3-button w3-red" type="reset">Wyczyść</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+    <div *ngIf="!visible" style="text-align: center;">
+      <h3>Pomyślnie wysłano wniosek urlopowy</h3>
+      <h5><button type="reset" (click)="back()" class="w3-button w3-blue">Powrót</button></h5>
+    </div>
   </div>
 </div>

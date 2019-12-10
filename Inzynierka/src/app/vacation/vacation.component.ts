@@ -10,6 +10,7 @@ import { HttpService } from '../http.service';
 export class VacationComponent implements OnInit {
 
   vacation: VacationForm = new VacationForm();
+  visible = true;
 
   constructor(private httpService: HttpService) { }
 
@@ -18,5 +19,9 @@ export class VacationComponent implements OnInit {
 
   sendVacationForm() {
     this.httpService.vacationForm(this.vacation);
+    this.visible = false;
+  }
+  back() {
+    this.visible = true;
   }
 }
