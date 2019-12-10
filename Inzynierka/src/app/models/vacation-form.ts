@@ -1,8 +1,8 @@
-import { User } from './User';
+import { WorkSchedule } from './work-schedule';
 
 export class VacationForm {
   id?;
   startDate?;
   endDate?;
-  user?: User;
+  workSchedule?: WorkSchedule;
 }

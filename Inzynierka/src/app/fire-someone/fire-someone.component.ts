@@ -11,6 +11,8 @@ export class FireSomeoneComponent implements OnInit {
   user: User = new User();
   usersList: Array<User>;
   reason;
+  visible = false;
+
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
@@ -20,5 +22,6 @@ export class FireSomeoneComponent implements OnInit {
   }
   leaveSomeone() {
     this.httpService.fireUser(this.reason, this.user);
+    this.visible = true;
   }
 }

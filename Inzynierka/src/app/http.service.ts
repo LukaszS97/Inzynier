@@ -12,6 +12,7 @@ import { Email } from './models/email';
 import { WorkSchedule } from './models/work-schedule';
 import { Task } from './models/task';
 import { Raport } from './models/raport';
+import { VacationForm } from './models/vacation-form';
 
 
 
@@ -97,6 +98,10 @@ export class HttpService {
         });
     });
   }
+  async vacationForm(vacationForm: VacationForm): Promise<any> {
+    return await this.httpPostRequest('api/TU DAC SCIEZKE', vacationForm);
+  }
+
   async fireUser(reason, user: User): Promise<any> {
     return await this.httpPostRequest('api/user/' + reason, user);
   }
