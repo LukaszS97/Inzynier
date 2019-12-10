@@ -3,10 +3,7 @@ package app.controller;
 import javax.mail.MessagingException;
 import javax.validation.Valid;
 
-import app.model.Employee;
-import app.model.StringResponse;
-import app.model.Task;
-import app.model.User;
+import app.model.*;
 import app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -70,11 +67,12 @@ public class UserController {
         userService.removeUser();
     }
 
+    //Usuwanie wskazanego pracownika (DELETEM cos nie idzie w angularze)
     @RequestMapping(path = "/{reason}",
-            method = RequestMethod.DELETE,
+            method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteIndicatedUser(@RequestBody User user, @PathVariable String reason) throws MessagingException {
-        userService.removeIndicatedUser(user,reason);
+        userService.removeIndicatedUser(user, reason);
     }
 
 
