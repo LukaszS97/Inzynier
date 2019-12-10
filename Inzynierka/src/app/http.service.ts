@@ -26,7 +26,7 @@ export class HttpService {
   // get z lub bez parametru *************************************************************************************************8
   public httpGetRequest(actionName: string, params: string = ''): Promise<any> {
     return new Promise((resolve) => {
-      this.http.get<any>(`http://localhost:8080/${actionName}/${params}`, {observe: 'response'})
+      this.http.get<any>(`http://localhost:8080/${actionName}/${params}`, { observe: 'response' })
         .subscribe((response: HttpResponse<any>) => {
           if (response.status >= 200 && response.status < 300) {
             resolve(response.body);
@@ -97,6 +97,10 @@ export class HttpService {
         });
     });
   }
+  async fireUser(reason, user: User): Promise<any> {
+    return await this.httpPostRequest('api/user/' + reason, user);
+  }
+
   async addRaport(raport: Raport): Promise<any> {
     return await this.httpPostRequest('api/taskReport', raport);
   }
@@ -131,7 +135,7 @@ export class HttpService {
     });
   }
 
-  async putEmployee( idUser, employee: Employee): Promise<string> {
+  async putEmployee(idUser, employee: Employee): Promise<string> {
     return await this.httpPutRequest(`api/employee`, idUser, employee);
   }
 
@@ -155,7 +159,7 @@ export class HttpService {
   }
 
   async addUser(user: User, role: UserRole): Promise<string> {
-    return await this.httpPostRequestParm('register', role.userRole,  user);
+    return await this.httpPostRequestParm('register', role.userRole, user);
   }
 
   async addCandidate(candidate: CandidateEmployee, job: JobName): Promise<string> {
@@ -166,7 +170,7 @@ export class HttpService {
   // usuwanie danych  ************************************************************************************************
   public httpDeleteRequest(actionName: string, params: string = ''): Promise<any> {
     return new Promise((resolve) => {
-      this.http.delete<any>(`http://localhost:8080/${actionName}/${params}`, {observe: 'response'})
+      this.http.delete<any>(`http://localhost:8080/${actionName}/${params}`, { observe: 'response' })
         .subscribe((response: HttpResponse<any>) => {
           if (response.status >= 200 && response.status < 300) {
             resolve(response.body);
@@ -179,22 +183,5 @@ export class HttpService {
 
   async deleteEmployee(): Promise<any> {
     return await this.httpDeleteRequest('api/user');
-  }
-
-  public httpDeleteRequestWithData(actionName: string, params: string = '', requestData: any = {}): Promise<any> {
-    return new Promise((resolve) => {
-      this.http.delete<any>(`http://localhost:8080/${actionName}/${params}`, {observe: 'response'})
-        .subscribe((response: HttpResponse<any>) => {
-          if (response.status >= 200 && response.status < 300) {
-            resolve(response.body);
-          } else {
-            resolve(false);
-          }
-        });
-    });
-  }
-
-  async deleteSomeone(reason: string, user: User): Promise<any> {
-    return await this.httpDeleteRequestWithData('api/user', reason, user);
   }
 }
