@@ -37,6 +37,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { ShowRaportsComponent } from './show-raports/show-raports.component';
 import { FireSomeoneComponent } from './fire-someone/fire-someone.component';
 import { ShowVacationComponent } from './show-vacation/show-vacation.component';
+import { FindingReplacementComponent } from './finding-replacement/finding-replacement.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ShowVacationComponent } from './show-vacation/show-vacation.component';
     AddTaskComponent,
     ShowRaportsComponent,
     FireSomeoneComponent,
-    ShowVacationComponent
+    ShowVacationComponent,
+    FindingReplacementComponent
   ],
   imports: [
     BrowserModule,

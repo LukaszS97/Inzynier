@@ -5,7 +5,8 @@
         <table border style="margin: auto;">
           <tbody>
             <tr class="trMain">
-              <td>Id</td>
+              <td>Id wniosku</td>
+              <td>Id Pracownika</td>
               <td>Pracownik</td>
               <td>Rozpoczęcie urlopu</td>
               <td>Zakończenie urlopu</td>
@@ -13,6 +14,7 @@
             </tr>
             <tr class="tr" *ngFor="let one of vacationFormList, let odd = odd" [ngClass]="{'odd-tr': odd===true}">
               <td>{{one.id}}</td>
+              <td>{{one.employee.id}}</td>
               <td>{{one.employee.firstName}} {{one.employee.lastName}}</td>
               <td>{{one.startDate}}</td>
               <td class="comment">{{one.endDate}}</td>
@@ -28,6 +30,10 @@
                  <td>Podaj ID wniosku</td>
                  <td><input type="text" [(ngModel)]="vacationForm.id"></td>
                </tr>
+               <tr>
+                  <td>Podaj ID użytkownika</td>
+                  <td><input type="text" [(ngModel)]="vacationForm.employee.id"></td>
+                </tr>
                <tr>
                    <td>Decyzja</td>
                    <td><label>

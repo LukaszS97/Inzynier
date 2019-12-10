@@ -24,6 +24,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { ShowRaportsComponent } from './show-raports/show-raports.component';
 import { FireSomeoneComponent } from './fire-someone/fire-someone.component';
 import { ShowVacationComponent } from './show-vacation/show-vacation.component';
+import { FindingReplacementComponent } from './finding-replacement/finding-replacement.component';
 
 
 const routes: Routes = [
@@ -49,7 +50,8 @@ const routes: Routes = [
   { path: 'add-task', component: AddTaskComponent, canActivate: [AuthGuardService]},
   { path: 'show-raports', component: ShowRaportsComponent, canActivate: [AuthGuardService]},
   { path: 'fire-someone', component: FireSomeoneComponent, canActivate: [AuthGuardService]},
-  { path: 'show-vacation', component: ShowVacationComponent, canActivate: [AuthGuardService]}
+  { path: 'show-vacation', component: ShowVacationComponent, canActivate: [AuthGuardService]},
+  { path: 'finding-replacement', component: FindingReplacementComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({
