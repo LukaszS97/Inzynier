@@ -67,8 +67,6 @@ public class VacationFormService {
     }
 
 
-
-
     public List<VacationForm> getVacationForms() {
         List<VacationForm> list = vacationFormRepository.findAll();
 
@@ -79,27 +77,35 @@ public class VacationFormService {
     }
 
 
-
-
-
     public void refreshVacationForms(VacationForm vacationForm) {
         long idEmployee = vacationForm.getEmployee().getId();
+
+        VacationForm vacationFormAllData = vacationFormRepository.findById(vacationForm.getId()).orElseThrow(
+                () -> new NoSuchElementException("Not Found"));
+        vacationFormAllData.setAccepted(vacationForm.isAccepted());
 
         Employee employee = employeeRepository.findById(idEmployee).orElseThrow(
                 () -> new NoSuchElementException("Not found"));
 
         List<WorkSchedule> list = employee.getWorkSchedule();
 
-        //tylko daty przed rozpoczeciem i po zakonczeniu urlopu
-        if (vacationForm.isAccepted() == true) {
+
+
+        //tylko daty w przedziale urlopu
+        if (vacationFormAllData.isAccepted() == true) {
             list = list.stream()
-                    .filter(x -> ((x.getLocalDate().isAfter(vacationForm.getEndDate())) &&
-                            (x.getLocalDate().isBefore(vacationForm.getStartDate()))))
+                    .filter(x -> (!(x.getLocalDate().isAfter(vacationForm.getEndDate())) &&
+                            !(x.getLocalDate().isBefore(vacationForm.getStartDate()))))
                     .collect(Collectors.toList());
 
-            workScheduleRepository.deleteAll();
-            employee.setWorkSchedule(list);
-            employeeRepository.save(employee);
+            for (WorkSchedule work : list){
+                workScheduleRepository.delete(work);
+            }
+
+
+            //workScheduleRepository.deleteAll();
+            //employee.setWorkSchedule(list);
+            //employeeRepository.save(employee);
             vacationForm.setDone(true);
             vacationFormRepository.save(vacationForm);
         } else {
