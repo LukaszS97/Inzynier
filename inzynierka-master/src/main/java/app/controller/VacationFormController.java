@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/vacationForm")
 public class VacationFormController {
@@ -25,6 +27,18 @@ public class VacationFormController {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postVacationForm(@RequestBody VacationForm vacationForm){
         vacationFormService.saveVacationForm(vacationForm);
+    }
+
+    @RequestMapping(method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<VacationForm> getVacationForm(){
+        return vacationFormService.getVacationForms();
+    }
+
+    @RequestMapping(method = RequestMethod.PUT,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void putVacationForm(@RequestBody VacationForm vacationForm){
+        vacationFormService.refreshVacationForms(vacationForm);
     }
 
 

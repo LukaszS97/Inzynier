@@ -60,9 +60,42 @@ public class VacationFormService {
         Employee employee = employeeRepository.findById(user.getId_user()).orElseThrow(
                 () -> new NoSuchElementException("Not found"));
 
-
         vacationForm.setEmployee(employee);
         vacationFormRepository.save(vacationForm);
+    }
+
+    public List<VacationForm> getVacationForms() {
+        List<VacationForm> list = vacationFormRepository.findAll();
+
+        list = list.stream()
+                .filter(x -> x.isDone() == false)
+                .collect(Collectors.toList());
+        return list;
+    }
+
+    public void refreshVacationForms(VacationForm vacationForm) {
+        long idEmployee = vacationForm.getEmployee().getId();
+
+        Employee employee = employeeRepository.findById(idEmployee).orElseThrow(
+                () -> new NoSuchElementException("Not found"));
+
+        List<WorkSchedule> list = employee.getWorkSchedule();
+
+        //tylko daty przed rozpoczeciem i po zakonczeniu urlopu
+        if (vacationForm.isAccepted() == true) {
+            list = list.stream()
+                    .filter(x -> ((x.getLocalDate().isAfter(vacationForm.getEndDate())) &&
+                            (x.getLocalDate().isBefore(vacationForm.getStartDate()))))
+                    .collect(Collectors.toList());
+
+            workScheduleRepository.deleteAll();
+            employee.setWorkSchedule(list);
+            employeeRepository.save(employee);
+            vacationForm.setDone(true);
+            vacationFormRepository.save(vacationForm);
+        }else{
+            vacationForm.setDone(true);
+        }
     }
 }
 

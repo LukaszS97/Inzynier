@@ -13,6 +13,7 @@ public class VacationForm implements Serializable {
     private LocalDate startDate;
     private LocalDate endDate;
     private boolean isAccepted;
+    private boolean isDone;
     @OneToOne
     @JoinColumn(name = "id_employee")
     private Employee employee;
@@ -44,6 +45,22 @@ public class VacationForm implements Serializable {
 
     public Long getId() {
         return id;
+    }
+
+    public boolean isAccepted() {
+        return isAccepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        isAccepted = accepted;
+    }
+
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
     }
 
     public VacationForm() {

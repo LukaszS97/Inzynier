@@ -34,7 +34,7 @@ public class Employee implements Serializable {
     @JsonIgnore
     private User user;
     @OneToMany(mappedBy = "employee",
-            cascade = CascadeType.REMOVE)
+            cascade = CascadeType.ALL)
     private List<WorkSchedule> workSchedule;
     @OneToOne(mappedBy = "employee")
     private VacationForm vacationForm;
