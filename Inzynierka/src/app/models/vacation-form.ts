@@ -1,8 +1,9 @@
-import { WorkSchedule } from './work-schedule';
+import { Employee } from './employee';
 
 export class VacationForm {
   id?;
   startDate?;
   endDate?;
-  workSchedule?: WorkSchedule;
+  isAccept?: boolean;
+  employee: Employee;
 }

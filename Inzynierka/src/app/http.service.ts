@@ -99,7 +99,7 @@ export class HttpService {
     });
   }
   async vacationForm(vacationForm: VacationForm): Promise<any> {
-    return await this.httpPostRequest('api/TU DAC SCIEZKE', vacationForm);
+    return await this.httpPostRequest('api/vacationForm', vacationForm);
   }
 
   async fireUser(reason, user: User): Promise<any> {
