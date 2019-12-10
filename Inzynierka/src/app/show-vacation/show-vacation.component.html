@@ -2,7 +2,6 @@
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Wnioski urlopowe</span></h5>
     <div *ngIf="vacationFormList?.length>0">
-      <form>
         <table border style="margin: auto;">
           <tbody>
             <tr class="trMain">
@@ -21,8 +20,7 @@
             </tr>
           </tbody>
         </table>
-      </form>
-      <div style="text-align: center;"><br><br>
+      <div style="text-align: center;" *ngIf="visible"><br><br><br><br>
         <h4>Wyślij decyzję w sprawie urlopu</h4>
            <table style=" margin: auto;">
              <tbody>
@@ -38,10 +36,14 @@
                      </label></td>
                  </tr>
                  <tr>
-                     <td colspan="2"><button class="w3-button w3-blue" (click)="sendAnswer()">Wyślij</button></td>
+                     <td colspan="2"><button class="w3-button w3-blue" type="reset" (click)="sendAnswer()">Wyślij</button></td>
                    </tr>
              </tbody>
            </table>
+       </div>
+       <div *ngIf="!visible" style="text-align: center;">
+        <h3>Pomyślnie wysłano odpowieź dotyczącą wniosku urlopowego</h3>
+        <h5><button class="w3-button w3-blue" (click)="returnToSendAnswer()">Wyślij kolejną</button></h5>
        </div>
     </div>
     <div *ngIf="vacationFormList?.length<1" style="text-align: center;">

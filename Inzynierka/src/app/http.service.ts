@@ -143,10 +143,28 @@ export class HttpService {
         });
     });
   }
-
   async putEmployee(idUser, employee: Employee): Promise<string> {
     return await this.httpPutRequest(`api/employee`, idUser, employee);
   }
+
+  // put, który cos zwraca z parametrem ************************************************************************************************
+  public httpPutRequestNoParam(actionName: string, requestData: any = {}): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.put<any>(`http://localhost:8080/${actionName}`, requestData, { observe: 'response' })
+        .subscribe((response: HttpResponse<any>) => {
+          if (response.status >= 200 && response.status < 300) {
+            resolve(response.body);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
+  async sendAnswer(vacationForm: VacationForm): Promise<any> {
+    return await this.httpPutRequestNoParam(`api/vacationForm`, vacationForm);
+  }
+
+
 
   // post z parametrem , który coś zwraca ************************************************************************************************
   public httpPostRequestParm(actionName: string, params: string = '', requestData: any = {}): Promise<any> {

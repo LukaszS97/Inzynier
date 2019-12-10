@@ -10,6 +10,7 @@ import { HttpService } from '../http.service';
 export class ShowVacationComponent implements OnInit {
   vacationFormList: Array<VacationForm>;
   vacationForm: VacationForm = new VacationForm();
+  visible = true;
 
   id;
   isAccepted;
@@ -22,8 +23,15 @@ export class ShowVacationComponent implements OnInit {
       this.vacationFormList = result;
     });
   }
+
+  returnToSendAnswer() {
+    this.visible = true;
+  }
+
   sendAnswer() {
+    this.visible = false;
     console.log(this.vacationForm);
+    this.httpService.sendAnswer(this.vacationForm);
   }
 
   // getDimensions(id) {
