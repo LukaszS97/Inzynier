@@ -33,7 +33,8 @@ public class Employee implements Serializable {
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "employee",
+            cascade = CascadeType.REMOVE)
     private List<WorkSchedule> workSchedule;
 
 

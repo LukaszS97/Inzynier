@@ -21,7 +21,8 @@ public class WorkSchedule implements Serializable {
     private int startTime;
     private int endTime;
     private LocalDate localDate;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,
+            cascade = CascadeType.REMOVE)
     @JoinColumn(name = "employee_Id")
     @JsonIgnore
     private Employee employee;
