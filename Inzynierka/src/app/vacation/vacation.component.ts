@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VacationForm } from '../models/vacation-form';
 
 @Component({
   selector: 'app-vacation',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VacationComponent implements OnInit {
 
+  vacation: VacationForm = new VacationForm();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  sendVacationForm() {
+
+  }
 }

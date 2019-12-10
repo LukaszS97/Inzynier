@@ -19,6 +19,6 @@ export class FireSomeoneComponent implements OnInit {
     });
   }
   leaveSomeone() {
-    this.httpService.deleteSomeone(this.reason, this.user);
+    this.httpService.fireUser(this.reason, this.user);
   }
 }
