@@ -36,6 +36,8 @@ public class Employee implements Serializable {
     @OneToMany(mappedBy = "employee",
             cascade = CascadeType.REMOVE)
     private List<WorkSchedule> workSchedule;
+    @OneToOne(mappedBy = "employee")
+    private VacationForm vacationForm;
 
 
     public String getFirstName() {

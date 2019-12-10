@@ -27,6 +27,7 @@ public class WorkSchedule implements Serializable {
     @JsonIgnore
     private Employee employee;
 
+
     public LocalDate getLocalDate() {
         return localDate;
     }
