@@ -23,6 +23,7 @@ import { GraphicCreatorComponent } from './graphic-creator/graphic-creator.compo
 import { AddTaskComponent } from './add-task/add-task.component';
 import { ShowRaportsComponent } from './show-raports/show-raports.component';
 import { FireSomeoneComponent } from './fire-someone/fire-someone.component';
+import { ShowVacationComponent } from './show-vacation/show-vacation.component';
 
 
 const routes: Routes = [
@@ -47,7 +48,8 @@ const routes: Routes = [
   { path: 'graphic-creator', component: GraphicCreatorComponent, canActivate: [AuthGuardService]},
   { path: 'add-task', component: AddTaskComponent, canActivate: [AuthGuardService]},
   { path: 'show-raports', component: ShowRaportsComponent, canActivate: [AuthGuardService]},
-  { path: 'fire-someone', component: FireSomeoneComponent, canActivate: [AuthGuardService]}
+  { path: 'fire-someone', component: FireSomeoneComponent, canActivate: [AuthGuardService]},
+  { path: 'show-vacation', component: ShowVacationComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

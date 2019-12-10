@@ -5,5 +5,8 @@ export class VacationForm {
   startDate?;
   endDate?;
   isAccept?: boolean;
-  employee: Employee;
+  timeSendingForm?;
+  isDone?;
+  isAccpeted?;
+  employee: Employee = new Employee();
 }

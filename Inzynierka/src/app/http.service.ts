@@ -37,6 +37,10 @@ export class HttpService {
         });
     });
   }
+  async getVacationFormList(): Promise<Array<VacationForm>> {
+    return await this.httpGetRequest('api/vacationForm');
+  }
+
   async getRaportsOneEmployee(): Promise<Array<Raport>> {
     return await this.httpGetRequest('api/taskReport/task');
   }
