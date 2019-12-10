@@ -149,7 +149,7 @@ public class UserService {
 
         Mail mail = new Mail();
         mail.setTo(user.getEmail());
-        mail.setSubject("Wypad z pracy gamoniu");
+        mail.setSubject("Zwolnienie");
         mail.setText(reson);
         mailService.sendMail(mail, true);
 

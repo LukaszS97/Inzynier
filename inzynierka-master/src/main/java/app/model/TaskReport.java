@@ -12,7 +12,7 @@ public class TaskReport implements Serializable {
     private Long id;
     private String comment;
     private Date finishDate;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     private Task task;
 
 

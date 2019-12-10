@@ -17,7 +17,8 @@ public class JobOffer implements Serializable {
     private String requirements;
     private String niceToHave;
     private String conditions;
-    @OneToMany(mappedBy = "jobOffer")
+    @OneToMany(mappedBy = "jobOffer",
+            cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<ApplicationForm> applicationForms;
 

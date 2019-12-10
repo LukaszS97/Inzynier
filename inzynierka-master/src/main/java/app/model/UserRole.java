@@ -13,7 +13,8 @@ public class UserRole implements Serializable {
     private Long id;
     private String role;
     private String description;
-    @OneToMany(mappedBy = "userRole")
+    @OneToMany(mappedBy = "userRole",
+            cascade = CascadeType.REMOVE)
     private List<User> users;
 
     public Long getId() {

@@ -30,7 +30,8 @@ public class User implements Serializable {
             cascade = CascadeType.ALL)
     @JsonIgnore
     private Employee employee;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Task> tasks;
 
