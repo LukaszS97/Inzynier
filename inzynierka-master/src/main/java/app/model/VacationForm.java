@@ -1,7 +1,6 @@
 package app.model;
 
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -50,19 +49,19 @@ public class VacationForm implements Serializable {
         return id;
     }
 
-    public boolean isAccepted() {
+    public boolean getIsAccepted() {
         return isAccepted;
     }
 
-    public void setAccepted(boolean accepted) {
+    public void setIsAccepted(boolean accepted) {
         isAccepted = accepted;
     }
 
-    public boolean isDone() {
+    public boolean getIsDone() {
         return isDone;
     }
 
-    public void setDone(boolean done) {
+    public void setIsDone(boolean done) {
         isDone = done;
     }
 

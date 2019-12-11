@@ -59,11 +59,16 @@ public class EmployeeService {
     public void editEmployeeData(Employee employee, Long id) {
         Employee employ = employeeRepository.findById(id).orElseThrow(() ->
                 new NoSuchElementException("Not found"));
-        employ.setFirstName(employee.getFirstName());
-        employ.setLastName(employee.getLastName());
-        employ.setPhoneNumber(employee.getPhoneNumber());
-        employ.setBankAccountNumber(employee.getBankAccountNumber());
-        employ.setAddress(employee.getAddress());
+        if (employee.getFirstName() != null)
+            employ.setFirstName(employee.getFirstName());
+        if (employee.getLastName() != null)
+            employ.setLastName(employee.getLastName());
+        if (employee.getPhoneNumber() != null)
+            employ.setPhoneNumber(employee.getPhoneNumber());
+        if (employee.getBankAccountNumber() != null)
+            employ.setBankAccountNumber(employee.getBankAccountNumber());
+        if (employee.getAddress() != null)
+            employ.setAddress(employee.getAddress());
         employeeRepository.save(employ);
     }
 

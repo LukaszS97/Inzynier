@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 @RestController
@@ -39,7 +40,7 @@ public class VacationFormController {
 
     @RequestMapping(method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void putVacationForm(@RequestBody VacationForm vacationForm){
+    public void putVacationForm(@RequestBody VacationForm vacationForm) throws MessagingException {
         vacationFormService.refreshVacationForms(vacationForm);
     }
 
