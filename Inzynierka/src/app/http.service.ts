@@ -157,6 +157,10 @@ export class HttpService {
         });
     });
   }
+  async putGraphic(idGraphic, user: User): Promise<string> {
+    return await this.httpPutRequest(`chujumuju`, idGraphic, user);
+  }
+
   async putEmployee(idUser, employee: Employee): Promise<string> {
     return await this.httpPutRequest(`api/employee`, idUser, employee);
   }

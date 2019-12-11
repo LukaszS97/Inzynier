@@ -40,7 +40,7 @@
       (click)="showGraphic()">{{napis}}</button></h5>
     <div *ngIf="pozwolenie">
       <div *ngFor="let one of grafikList, let odd = odd" class="grafik" [ngClass]="{'odd-div': odd===true}">
-        Użytkownik:<br>{{one.lastName}} {{one.firstName}}
+        Grafik ID:{{one.id}} <br>Użytkownik:<br>{{one.lastName}} {{one.firstName}}
         <div *ngFor="let main of one.workSchedule">
         Data:{{main.localDate}}<br> Od godz.:{{main.startTime}} do godz.:{{main.endTime}}
       </div>
