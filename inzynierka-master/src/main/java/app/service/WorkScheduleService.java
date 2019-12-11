@@ -63,10 +63,11 @@ public class WorkScheduleService {
 
     }
 
-    public void refreshWorkSchedule(Employee employee, long idWorkSchedule) {
+    public void refreshWorkSchedule(User user, long idWorkSchedule) {
+        User usr = userRepository.findByEmail(user.getEmail());
         WorkSchedule workSchedule = workScheduleRepository.findById(idWorkSchedule).orElseThrow(() ->
                 new NoSuchElementException("Not found"));
-        employee = employeeRepository.findById(employee.getId()).orElseThrow(() ->
+        Employee employee = employeeRepository.findById(user.getEmployee().getId()).orElseThrow(() ->
                 new NoSuchElementException("Not found"));
 
 

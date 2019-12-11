@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.model.Employee;
+import app.model.User;
 import app.model.WorkSchedule;
 import app.service.WorkScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +47,8 @@ public class WorkScheduleController {
     @RequestMapping(path = "/{idWorkSchedule}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void putWorkSchedule(@RequestBody Employee employee, @PathVariable long idWorkSchedule) {
-        workScheduleService.refreshWorkSchedule(employee, idWorkSchedule);
-        
+    public void putWorkSchedule(@RequestBody User user, @PathVariable long idWorkSchedule) {
+        workScheduleService.refreshWorkSchedule(user, idWorkSchedule);
+
     }
 }
