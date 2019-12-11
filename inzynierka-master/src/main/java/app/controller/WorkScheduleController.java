@@ -42,9 +42,9 @@ public class WorkScheduleController {
         return workScheduleService.showWorkScheduleForEmployee();
     }
 
-    //aktualizacja grafiku dla urlopow
+    
     @RequestMapping(path = "/{idWorkSchedule}",
-            method = RequestMethod.POST,
+            method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putWorkSchedule(@RequestBody Employee employee, @PathVariable long idWorkSchedule) {
         workScheduleService.refreshWorkSchedule(employee, idWorkSchedule);
