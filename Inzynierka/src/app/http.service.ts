@@ -38,6 +38,10 @@ export class HttpService {
         });
     });
   }
+  async getHoursAllEmployee(workedHour): Promise<Array<WorkedHours>> {
+    return await this.httpGetRequest('api/workedHours', workedHour);
+  }
+
   async getVacationFormList(): Promise<Array<VacationForm>> {
     return await this.httpGetRequest('api/vacationForm');
   }
@@ -104,7 +108,7 @@ export class HttpService {
     });
   }
   async sumHours(workedHours: WorkedHours): Promise<any> {
-    return await this. httpPostRequest('api/DAJŚĆIEZKE', workedHours);
+    return await this. httpPostRequest('api/workedHours', workedHours);
   }
 
   async vacationForm(vacationForm: VacationForm): Promise<any> {

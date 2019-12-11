@@ -39,6 +39,8 @@ import { FireSomeoneComponent } from './fire-someone/fire-someone.component';
 import { ShowVacationComponent } from './show-vacation/show-vacation.component';
 import { FindingReplacementComponent } from './finding-replacement/finding-replacement.component';
 import { WorkedHoursComponent } from './worked-hours/worked-hours.component';
+import { WorkingTimeAllEmployeeComponent } from './working-time-all-employee/working-time-all-employee.component';
+import { WorkingTimeComponent } from './working-time/working-time.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { WorkedHoursComponent } from './worked-hours/worked-hours.component';
     FireSomeoneComponent,
     ShowVacationComponent,
     FindingReplacementComponent,
-    WorkedHoursComponent
+    WorkedHoursComponent,
+    WorkingTimeAllEmployeeComponent,
+    WorkingTimeComponent
   ],
   imports: [
     BrowserModule,

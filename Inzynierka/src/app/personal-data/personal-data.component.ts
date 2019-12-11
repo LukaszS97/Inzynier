@@ -19,8 +19,10 @@ export class PersonalDataComponent implements OnInit {
 
   ngOnInit() {
     this.httpService.getId().then((userId) => {
+      console.log(userId);
       this.httpService.getEmployee(userId).then((person) => {
         this.result = person;
+        console.log(person);
       });
     });
 
