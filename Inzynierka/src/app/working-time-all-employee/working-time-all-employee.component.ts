@@ -14,7 +14,7 @@ export class WorkingTimeAllEmployeeComponent implements OnInit {
   hours: Array<WorkedHours>;
 
   constructor(private httpService: HttpService) { }
-
+  showComment: boolean;
   ngOnInit() {
   }
   askForHours() {
@@ -22,5 +22,6 @@ export class WorkingTimeAllEmployeeComponent implements OnInit {
     this.httpService.getHoursAllEmployee(this.workedHour).then((result) => {
       this.hours = result;
     });
+    this.showComment = true;
   }
 }

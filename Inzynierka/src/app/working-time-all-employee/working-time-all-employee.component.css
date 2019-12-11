@@ -1,0 +1,26 @@
+.komunikat{
+  text-align: center;
+}
+
+table{
+  border-collapse: collapse;
+}
+.tr {
+  background: #DCDCDC;
+}
+td {
+  width:150px;
+  text-align: center;
+}
+.trMain {
+  background: #2196F3;
+  color: white;
+}
+.odd-tr {
+  background: #87CEEB;
+  color:black;
+}
+.noTask {
+  text-align: center;
+}
+

@@ -13,6 +13,10 @@ export class WorkingTimeComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.httpService.getHoursOneEmployee().then((result) => {
+      this.hours = result;
+      console.log(this.hours);
+    })
   }
 
 }

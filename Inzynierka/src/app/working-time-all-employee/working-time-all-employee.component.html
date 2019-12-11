@@ -35,6 +35,28 @@
               </tr>
             </tbody>
           </table>
-      </div>
+      </div><br><br>
+      <div *ngIf="hours?.length>0">
+          <div style="text-align: center;">
+            <table border style="margin: auto;">
+              <tbody>
+                <tr class="trMain">
+                  <td>Użytkownik</td>
+                  <td>Miesiąc</td>
+                  <td>Rok</td>
+                  <td style="width: 200px;">Liczba przepracowanych godzin</td>
+                </tr>
+                <tr class="tr" *ngFor="let one of hours, let odd = odd" [ngClass]="{'odd-tr': odd===true}">
+                  <td *ngIf="one.hours != '0'">{{one.user.email}}</td>
+                  <td *ngIf="one.hours != '0'">{{one.month}}</td>
+                  <td *ngIf="one.hours != '0'">{{one.year}}</td>
+                  <td *ngIf="one.hours != '0'">{{one.hours}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
     </div>
+  </div>
+  <div *ngIf="hours?.length<1 && showComment" style="text-align: center;">
+    <h5>Żaden z pracowników nie pracował w tym okresie.</h5>
   </div>
