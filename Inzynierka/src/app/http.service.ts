@@ -13,6 +13,7 @@ import { WorkSchedule } from './models/work-schedule';
 import { Task } from './models/task';
 import { Raport } from './models/raport';
 import { VacationForm } from './models/vacation-form';
+import { WorkedHours } from './models/worked-hours';
 
 
 
@@ -102,6 +103,10 @@ export class HttpService {
         });
     });
   }
+  async sumHours(workedHours: WorkedHours): Promise<any> {
+    return await this. httpPostRequest('api/DAJŚĆIEZKE', workedHours);
+  }
+
   async vacationForm(vacationForm: VacationForm): Promise<any> {
     return await this.httpPostRequest('api/vacationForm', vacationForm);
   }

@@ -38,6 +38,7 @@ import { ShowRaportsComponent } from './show-raports/show-raports.component';
 import { FireSomeoneComponent } from './fire-someone/fire-someone.component';
 import { ShowVacationComponent } from './show-vacation/show-vacation.component';
 import { FindingReplacementComponent } from './finding-replacement/finding-replacement.component';
+import { WorkedHoursComponent } from './worked-hours/worked-hours.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { FindingReplacementComponent } from './finding-replacement/finding-repla
     ShowRaportsComponent,
     FireSomeoneComponent,
     ShowVacationComponent,
-    FindingReplacementComponent
+    FindingReplacementComponent,
+    WorkedHoursComponent
   ],
   imports: [
     BrowserModule,

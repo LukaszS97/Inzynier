@@ -25,6 +25,7 @@ import { ShowRaportsComponent } from './show-raports/show-raports.component';
 import { FireSomeoneComponent } from './fire-someone/fire-someone.component';
 import { ShowVacationComponent } from './show-vacation/show-vacation.component';
 import { FindingReplacementComponent } from './finding-replacement/finding-replacement.component';
+import { WorkedHoursComponent } from './worked-hours/worked-hours.component';
 
 
 const routes: Routes = [
@@ -51,7 +52,8 @@ const routes: Routes = [
   { path: 'show-raports', component: ShowRaportsComponent, canActivate: [AuthGuardService]},
   { path: 'fire-someone', component: FireSomeoneComponent, canActivate: [AuthGuardService]},
   { path: 'show-vacation', component: ShowVacationComponent, canActivate: [AuthGuardService]},
-  { path: 'finding-replacement', component: FindingReplacementComponent, canActivate: [AuthGuardService]}
+  { path: 'finding-replacement', component: FindingReplacementComponent, canActivate: [AuthGuardService]},
+  { path: 'worked-hours', component: WorkedHoursComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

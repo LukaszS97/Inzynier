@@ -1,0 +1,43 @@
+<div class="w3-container" id="vacation">
+  <div class="w3-content" style="max-width:700px" style="text-align: center;">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-blue ">Oblicz liczbę przepracowanych godzin</span></h5>
+    <div *ngIf="!hidden">
+      <h5>Podaj miesiąc i rok, dla którego chcesz obliczyć liczbę przepracowanych godzin,<br> dla wszystkich pracowników</h5>
+      <table style="margin: auto;">
+        <tbody>
+          <tr>
+            <td>Miesiąc</td>
+            <td><select name="month" [(ngModel)]="sendRequestHours.month" class="w3-input w3-padding-S16 w3-border">
+                <option> 1</option>
+                <option> 2</option>
+                <option> 3</option>
+                <option> 4</option>
+                <option> 5</option>
+                <option> 6</option>
+                <option> 7</option>
+                <option> 8</option>
+                <option> 9</option>
+                <option> 10</option>
+                <option> 11</option>
+                <option> 12</option>
+              </select></td>
+          </tr>
+          <tr>
+            <td>Rok</td>
+            <td><select name="year" [(ngModel)]="sendRequestHours.year" class="w3-input w3-padding-S16 w3-border">
+                <option> 2019</option>
+                <option> 2020</option>
+              </select></td>
+          </tr><br>
+          <tr>
+            <td colspan="2"><button class="w3-button w3-blue" (click)="sumHours()">Oblicz liczbę przepracowanych
+                godzin</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="hidden">
+      <h3>Pomyślnie obliczyłeś liczbę przepracowanych godzin pracowników</h3>
+    </div>
+  </div>
+</div>
