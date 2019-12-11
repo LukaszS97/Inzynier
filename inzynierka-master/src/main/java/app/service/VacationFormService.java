@@ -78,17 +78,20 @@ public class VacationFormService {
 
 
     public void refreshVacationForms(VacationForm vacationForm) {
+
         long idEmployee = vacationForm.getEmployee().getId();
 
         VacationForm vacationFormAllData = vacationFormRepository.findById(vacationForm.getId()).orElseThrow(
                 () -> new NoSuchElementException("Not Found"));
+
         vacationFormAllData.setAccepted(vacationForm.isAccepted());
+        System.out.println(vacationFormAllData.isAccepted());
+
 
         Employee employee = employeeRepository.findById(idEmployee).orElseThrow(
                 () -> new NoSuchElementException("Not found"));
 
         List<WorkSchedule> list = employee.getWorkSchedule();
-
 
 
         //tylko daty w przedziale urlopu
@@ -97,22 +100,70 @@ public class VacationFormService {
                     .filter(x -> (!(x.getLocalDate().isAfter(vacationForm.getEndDate())) &&
                             !(x.getLocalDate().isBefore(vacationForm.getStartDate()))))
                     .collect(Collectors.toList());
+            System.out.println("66666666666666666666666" + list);
 
-            for (WorkSchedule work : list){
+            for (WorkSchedule work : list) {
                 workScheduleRepository.delete(work);
             }
-
+            System.out.println("777777777777777777777777");
 
             //workScheduleRepository.deleteAll();
             //employee.setWorkSchedule(list);
             //employeeRepository.save(employee);
             vacationForm.setDone(true);
+            System.out.println("88888888888888888888888");
             vacationFormRepository.save(vacationForm);
+            System.out.println("9999999999999999999999999999");
+        } else {
+            vacationForm.setDone(true);
+            vacationFormRepository.save(vacationForm);
+        }
+
+
+    }
+}
+
+/*
+Employee employee = employeeRepository.findById(idEmployee).orElseThrow(
+                () -> new NoSuchElementException("Not found"));
+
+        List<WorkSchedule> list = employee.getWorkSchedule();
+
+
+//tylko daty w przedziale urlopu
+        if (vacationFormAllData.isAccepted() == true) {
+            list = list.stream()
+                    .filter(x -> (!(x.getLocalDate().isAfter(vacationForm.getEndDate())) &&
+                            !(x.getLocalDate().isBefore(vacationForm.getStartDate()))))
+                    .collect(Collectors.toList());
+            System.out.println("66666666666666666666666" + list );
+
+            for (WorkSchedule work : list){
+                workScheduleRepository.delete(work);
+            }
+            System.out.println("777777777777777777777777");
+
+            //workScheduleRepository.deleteAll();
+            //employee.setWorkSchedule(list);
+            //employeeRepository.save(employee);
+            vacationForm.setDone(true);
+            System.out.println("88888888888888888888888");
+            vacationFormRepository.save(vacationForm);
+            System.out.println("9999999999999999999999999999");
         } else {
             vacationForm.setDone(true);
         }
-    }
-}
+
+
+ */
+
+
+
+
+
+
+
+
 
 
 
