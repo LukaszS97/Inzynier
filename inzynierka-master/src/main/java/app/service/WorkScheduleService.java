@@ -62,5 +62,16 @@ public class WorkScheduleService {
         return employee.getWorkSchedule();
 
     }
+
+    public void refreshWorkSchedule(Employee employee, long idWorkSchedule) {
+        WorkSchedule workSchedule = workScheduleRepository.findById(idWorkSchedule).orElseThrow(() ->
+                new NoSuchElementException("Not found"));
+        employee = employeeRepository.findById(employee.getId()).orElseThrow(() ->
+                new NoSuchElementException("Not found"));
+
+
+        workSchedule.setEmployee(employee);
+        workScheduleRepository.save(workSchedule);
+    }
 }
 

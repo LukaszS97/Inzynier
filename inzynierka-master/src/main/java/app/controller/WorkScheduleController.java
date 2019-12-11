@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.model.Employee;
 import app.model.WorkSchedule;
 import app.service.WorkScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,4 +42,11 @@ public class WorkScheduleController {
         return workScheduleService.showWorkScheduleForEmployee();
     }
 
+    //aktualizacja grafiku dla urlopow
+    @RequestMapping(path = "/{idWorkSchedule}",
+            method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void putWorkSchedule(@RequestBody Employee employee, @PathVariable long idWorkSchedule) {
+        workScheduleService.refreshWorkSchedule(employee, idWorkSchedule);
+    }
 }
