@@ -83,12 +83,12 @@ public class WorkedHoursService {
         return workedHoursRepository.findAllByUser(userRepository.findByEmail(name));
     }
 
-    public List<WorkedHours> showWorkedHoursForAllUsers(WorkedHours workedHours) {
+    public List<WorkedHours> showWorkedHoursForAllUsers(int month, int year) {
         List<WorkedHours> workedHoursList = workedHoursRepository.findAll();
 
         workedHoursList = workedHoursList.stream()
-                .filter(hours -> ((hours.getMonth() == workedHours.getMonth())
-                        && (hours.getYear() == workedHours.getYear())))
+                .filter(hours -> ((hours.getMonth() == month)
+                        && (hours.getYear() == year)))
                 .collect(Collectors.toList());
 
         return workedHoursList;

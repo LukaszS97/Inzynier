@@ -34,11 +34,11 @@ public class WorkedHoursController {
         return workedHoursService.showWorkedHours();
     }
 
-    @RequestMapping(path = "/users",
+    @RequestMapping(path = "/users/{month}/{year}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<WorkedHours> getWorkedHoursForAllUsers(@RequestBody WorkedHours workedHours) {
-        return workedHoursService.showWorkedHoursForAllUsers(workedHours);
+    public List<WorkedHours> getWorkedHoursForAllUsers(@PathVariable int month,@PathVariable int year) {
+        return workedHoursService.showWorkedHoursForAllUsers(month,year);
     }
 
 
