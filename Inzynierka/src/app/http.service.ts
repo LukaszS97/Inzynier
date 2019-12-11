@@ -158,7 +158,7 @@ export class HttpService {
     });
   }
   async putGraphic(idGraphic, user: User): Promise<string> {
-    return await this.httpPutRequest(`chujumuju`, idGraphic, user);
+    return await this.httpPutRequest(`/api/workSchedule`, idGraphic, user);
   }
 
   async putEmployee(idUser, employee: Employee): Promise<string> {
