@@ -104,7 +104,7 @@ export class HttpService {
     });
   }
   async sumHours(workedHours: WorkedHours): Promise<any> {
-    return await this. httpPostRequest('api/DAJŚĆIEZKE', workedHours);
+    return await this. httpPostRequest('api/workedHours', workedHours);
   }
 
   async vacationForm(vacationForm: VacationForm): Promise<any> {

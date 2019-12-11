@@ -34,6 +34,8 @@ public class User implements Serializable {
             cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Task> tasks;
+    @OneToMany(mappedBy = "user")
+    private List<WorkedHours> workedHours;
 
     public Long getId_user() {
         return id_user;
